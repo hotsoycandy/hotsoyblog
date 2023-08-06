@@ -1,0 +1,8 @@
+{
+  "name": "hotsoyblog",
+  "version": "0.1.0",
+  "main": "index.js",
+  "repository": "https://github.com/hotsoycandy/hotsoyblog.git",
+  "author": "hotsoycandy <wkdwnsghd617@gmail.com>",
+  "license": "UNLICENSED"
+}
