@@ -1,4 +1,4 @@
-import { generateID } from '../utils/generateID'
+import { generateID } from '../common/utils/generateID'
 
 export class Post {
   private readonly _idx: string
