@@ -5,6 +5,9 @@
   "repository": "https://github.com/hotsoycandy/hotsoyblog.git",
   "author": "hotsoycandy <wkdwnsghd617@gmail.com>",
   "license": "UNLICENSED",
+  "engines": {
+    "node": "^18"
+  },
   "scripts": {
     "test:lint": "ts-standard && tsc --noEmit"
   },
