@@ -20,22 +20,17 @@ export abstract class PostRepository {
     }
   ): Promise<Post>
 
-  abstract getPostList (
+  abstract getPosts (
     targetParams: {
-      idx?: string
+      idx?: string | { gte?: string }
       title?: string
       authorId?: string
     },
-    optionParams: {
+    optionParams?: {
       limit?: number
-      page?: string
+      sort?: 'ASC' | 'DESC'
     }
-  ): Promise<{
-    list: Post[]
-    limit: number
-    currentPage: string
-    nextPage: string
-  }>
+  ): Promise<Post[]>
 
   abstract updatePost (
     targetParams: {
