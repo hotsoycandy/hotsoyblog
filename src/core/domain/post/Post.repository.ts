@@ -15,7 +15,7 @@ export abstract class PostRepository {
       title?: string
       authorId?: string
     },
-    updateParams?: {
+    optionParams?: {
       increaseViewCount?: number
     }
   ): Promise<Post>
