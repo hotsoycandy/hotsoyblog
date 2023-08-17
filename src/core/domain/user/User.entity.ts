@@ -1,4 +1,4 @@
-import { generateID } from '../common/utils/generateID'
+import { generateID } from '../../common/utils/generateID'
 
 export class User {
   private readonly _idx: string

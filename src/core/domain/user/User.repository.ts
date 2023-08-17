@@ -1,4 +1,4 @@
-import { User } from 'core/entities/User.entity'
+import { User } from 'core/domain/user/User.entity'
 
 export abstract class UserRepository {
   abstract createUser (createParams: {}): Promise<User>

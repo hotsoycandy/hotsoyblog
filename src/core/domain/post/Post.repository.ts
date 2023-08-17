@@ -1,4 +1,4 @@
-import { Post } from 'core/entities/Post.entity'
+import { Post } from 'core/domain/post/Post.entity'
 
 export abstract class PostRepository {
   abstract createPost (
@@ -13,8 +13,10 @@ export abstract class PostRepository {
     targetParams: {
       idx?: string
       title?: string
-      content?: string
       authorId?: string
+    },
+    updateParams?: {
+      increaseViewCount?: number
     }
   ): Promise<Post>
 
@@ -22,7 +24,6 @@ export abstract class PostRepository {
     targetParams: {
       idx?: string
       title?: string
-      content?: string
       authorId?: string
     },
     optionParams: {
