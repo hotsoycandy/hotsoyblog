@@ -14,7 +14,7 @@ export class Post {
     authorId: string
     title: string
     content: string
-    commentIds: string[]
+    commentIds?: string[]
     createAt?: Date
     updateAt?: Date
   }) {
@@ -22,7 +22,7 @@ export class Post {
     this._authorId = createParam.authorId
     this._title = createParam.title
     this._content = createParam.content
-    this._commentIds = createParam.commentIds
+    this._commentIds = createParam.commentIds ?? []
     this._createAt = createParam.createAt ?? new Date()
     this._updateAt = createParam.updateAt ?? new Date()
   }
