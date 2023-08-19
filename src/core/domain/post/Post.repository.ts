@@ -22,7 +22,7 @@ export abstract class PostRepository {
 
   abstract getPosts (
     targetParams: {
-      idx?: string | { gte?: string }
+      idx?: string | { gte?: string, lte?: string }
       title?: string
       authorId?: string
     },
