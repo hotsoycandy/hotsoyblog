@@ -101,13 +101,15 @@ describe('사용자 포스트 목록 조회 테스트', () => {
     const content = '내용'
     const authorId = generateID('USER')
 
-    const post = new Post({
-      title,
-      content,
-      authorId
-    })
+    let post: Post
 
     beforeEach(() => {
+      post = new Post({
+        title,
+        content,
+        authorId
+      })
+
       postRepositoryInstance.getPosts
         .mockResolvedValueOnce([post])
     })
@@ -129,16 +131,20 @@ describe('사용자 포스트 목록 조회 테스트', () => {
   })
 
   describe('pagination 테스트', () => {
-    const posts: Post[] = []
+    let posts: Post[] = []
 
-    for (let i = 0; i < 30; i++) {
-      const post = new Post({
-        title: `제목${i}`,
-        content: `내용${i}`,
-        authorId: generateID('USER')
-      })
-      posts.push(post)
-    }
+    beforeEach(() => {
+      posts = []
+
+      for (let i = 0; i < 30; i++) {
+        const post = new Post({
+          title: `제목${i}`,
+          content: `내용${i}`,
+          authorId: generateID('USER')
+        })
+        posts.push(post)
+      }
+    })
 
     test('기본 limit보다 포스트가 많이 있을 때 nextPage를 불러와야 한다.', async () => {
       postRepositoryInstance.getPosts
