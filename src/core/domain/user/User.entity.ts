@@ -5,23 +5,23 @@ export class User {
   private _email: string
   private _password: string
   private _nickname: string
-  private readonly _createAt: Date
-  private _updateAt: Date
+  private readonly _createdAt: Date
+  private _updatedAt: Date
 
   constructor (createParam: {
-    idx: string
+    idx?: string
     email: string
     password: string
     nickname: string
-    createAt: Date
-    updateAt: Date
+    createdAt?: Date
+    updatedAt?: Date
   }) {
     this._idx = createParam.idx ?? generateID('USER')
     this._email = createParam.email
     this._password = createParam.password
     this._nickname = createParam.nickname
-    this._createAt = createParam.createAt ?? new Date()
-    this._updateAt = createParam.updateAt ?? new Date()
+    this._createdAt = createParam.createdAt ?? new Date()
+    this._updatedAt = createParam.updatedAt ?? new Date()
   }
 
   // idx
@@ -56,17 +56,17 @@ export class User {
     this._nickname = newNickname
   }
 
-  // createAt
-  get createAt (): Date {
-    return this._createAt
+  // createdAt
+  get createdAt (): Date {
+    return this._createdAt
   }
 
-  // updateAt
-  get updateAt (): Date {
-    return this._updateAt
+  // updatedAt
+  get updatedAt (): Date {
+    return this._updatedAt
   }
 
-  set updateAt (newUpdateAt: Date) {
-    this._updateAt = newUpdateAt
+  set updatedAt (newUpdatedAt: Date) {
+    this._updatedAt = newUpdatedAt
   }
 }

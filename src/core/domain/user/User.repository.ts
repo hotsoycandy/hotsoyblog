@@ -1,7 +1,10 @@
+import { CommonError } from 'core/common/errors/CommonError'
 import { User } from 'core/domain/user/User.entity'
 
 export abstract class UserRepository {
-  abstract createUser (createParams: {}): Promise<User>
+  abstract createUser (createParams: {
+
+  }): Promise<User | CommonError>
 
   abstract getUser (targetParams: {}): Promise<User>
 

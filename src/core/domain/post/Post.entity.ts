@@ -6,8 +6,8 @@ export class Post {
   private _title: string
   private _content: string
   private _commentIds: string[]
-  private readonly _createAt: Date
-  private _updateAt: Date
+  private readonly _createdAt: Date
+  private _updatedAt: Date
 
   constructor (createParam: {
     idx?: string
@@ -15,16 +15,16 @@ export class Post {
     title: string
     content: string
     commentIds?: string[]
-    createAt?: Date
-    updateAt?: Date
+    createdAt?: Date
+    updatedAt?: Date
   }) {
     this._idx = createParam.idx ?? generateID('POST')
     this._authorId = createParam.authorId
     this._title = createParam.title
     this._content = createParam.content
     this._commentIds = createParam.commentIds ?? []
-    this._createAt = createParam.createAt ?? new Date()
-    this._updateAt = createParam.updateAt ?? new Date()
+    this._createdAt = createParam.createdAt ?? new Date()
+    this._updatedAt = createParam.updatedAt ?? new Date()
   }
 
   // idx
@@ -68,17 +68,17 @@ export class Post {
     this._commentIds = newCommentIds
   }
 
-  // createAt
-  get createAt (): Date {
-    return this._createAt
+  // createdAt
+  get createdAt (): Date {
+    return this._createdAt
   }
 
-  // updateAt
-  get updateAt (): Date {
-    return this._updateAt
+  // updatedAt
+  get updatedAt (): Date {
+    return this._updatedAt
   }
 
-  set updateAt (newUpdateAt: Date) {
-    this._updateAt = newUpdateAt
+  set updatedAt (newUpdatedAt: Date) {
+    this._updatedAt = newUpdatedAt
   }
 }
