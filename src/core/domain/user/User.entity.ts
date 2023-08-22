@@ -2,7 +2,7 @@ import { generateID } from '../../common/utils/generateID'
 
 export class User {
   private readonly _idx: string
-  private _id: string
+  private _email: string
   private _password: string
   private _nickname: string
   private readonly _createAt: Date
@@ -10,14 +10,14 @@ export class User {
 
   constructor (createParam: {
     idx: string
-    id: string
+    email: string
     password: string
     nickname: string
     createAt: Date
     updateAt: Date
   }) {
     this._idx = createParam.idx ?? generateID('USER')
-    this._id = createParam.id
+    this._email = createParam.email
     this._password = createParam.password
     this._nickname = createParam.nickname
     this._createAt = createParam.createAt ?? new Date()
@@ -30,12 +30,12 @@ export class User {
   }
 
   // id
-  get id (): string {
-    return this._id
+  get email (): string {
+    return this._email
   }
 
-  set id (newId: string) {
-    this._id = newId
+  set email (newEmail: string) {
+    this._email = newEmail
   }
 
   // password
