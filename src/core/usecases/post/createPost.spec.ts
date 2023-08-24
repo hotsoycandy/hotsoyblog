@@ -1,12 +1,18 @@
+// external modules
+import { faker } from '@faker-js/faker'
+// use case
 import { CreatePost } from './createPost'
-
-import { generateID } from 'core/common/utils/generateID'
-import { PostRepository } from 'core/domain/post/Post.repository'
+// domain cores
 import { Post } from 'core/domain/post/Post.entity'
+import { PostRepository } from 'core/domain/post/Post.repository'
+// utils
+import { generateID } from 'core/common/utils/generateID'
+// errors
+import { InternalError } from 'core/common/errors/InternalError'
 import { ValidationError } from 'core/common/errors/ValidationError'
 
 describe('사용자 포스트 생성 테스트', () => {
-  let postRepositoryInstance: PostRepository
+  let postRepositoryInstance: jest.Mocked<PostRepository>
   let createPostInstance: CreatePost
 
   beforeEach(() => {
@@ -14,72 +20,93 @@ describe('사용자 포스트 생성 테스트', () => {
       createPost: jest.fn()
     } as any
 
+    postRepositoryInstance.createPost.mockClear()
+
     createPostInstance = new CreatePost(postRepositoryInstance)
   })
 
-  test('포스트 정상 생성', async () => {
-    const title = '제목'
-    const content = '내용'
-    const authorId = generateID('USER')
+  describe('포스트 단일 생성 테스트', () => {
+    const validTitle = faker.lorem.word(10)
+    const validContent = faker.lorem.paragraphs(3, '<br/>')
+    const validAuthorId = generateID('USER')
 
-    postRepositoryInstance.createPost = jest.fn()
-      .mockResolvedValueOnce(new Post({
-        title,
-        content,
-        authorId
-      }))
+    let validPost: Post
 
-    const res = await createPostInstance.execute({
-      title,
-      content,
-      authorId
+    beforeEach(() => {
+      validPost = new Post({
+        title: validTitle,
+        content: validContent,
+        authorId: validAuthorId
+      })
     })
 
-    expect(res.title).toBe(title)
-    expect(res.content).toBe(content)
-    expect(res.authorId).toBe(authorId)
-  })
+    test('포스트 정상 생성', async () => {
+      postRepositoryInstance.createPost
+        .mockResolvedValueOnce(validPost)
+      const res = await createPostInstance.execute({
+        title: validTitle,
+        content: validContent,
+        authorId: validAuthorId
+      })
 
-  test('제목 50자 초과', async () => {
-    const title = '01234567890123456789012345678901234567890123456789넘어간다~~~'
-    const content = '내용'
-    const authorId = generateID('USER')
+      expect(res).toBeInstanceOf(Post)
+      if (!(res instanceof Post)) return
+      expect(postRepositoryInstance.createPost)
+        .toBeCalledTimes(1)
+      expect(postRepositoryInstance.createPost)
+        .toBeCalledWith({
+          title: validTitle,
+          content: validContent,
+          authorId: validAuthorId
+        })
+      expect(res.title).toBe(validTitle)
+      expect(res.content).toBe(validContent)
+      expect(res.authorId).toBe(validAuthorId)
+    })
 
-    postRepositoryInstance.createPost = jest.fn()
-      .mockResolvedValueOnce(new Post({
-        title,
-        content,
-        authorId
-      }))
+    test('"title"이 50자 초과일 경우 ValidationError 반환', async () => {
+      const invalidTitle = faker.internet.password({
+        pattern: /^\w{51}$/
+      })
 
-    const res = await createPostInstance.execute({
-      title,
-      content,
-      authorId
-    }).catch(err => err)
+      const res = await createPostInstance.execute({
+        title: invalidTitle,
+        content: validContent,
+        authorId: validAuthorId
+      })
 
-    expect(res).toBeInstanceOf(ValidationError)
-    expect(res.message).toContain('"title"')
-    expect(res.message).toContain('길이')
-    expect(res.message).toContain('50자')
-  })
+      expect(postRepositoryInstance.createPost)
+        .toBeCalledTimes(0)
 
-  test('DB 문제', async () => {
-    const title = '글'
-    const content = '내용'
-    const authorId = generateID('USER')
-    const repoErrorMessage = 'SQL ERROR'
+      expect(res).toBeInstanceOf(ValidationError)
+      if (!(res instanceof ValidationError)) return
+      expect(res.message).toContain('"title"은 50자를 초과할 수 없습니다.')
+    })
 
-    postRepositoryInstance.createPost = jest.fn()
-      .mockRejectedValueOnce(new Error(repoErrorMessage))
+    test('저장 중 문제가 생겼을 경우 Error 내용을 그대로 반환하는가', async () => {
+      const errorMessage = faker.lorem.word()
 
-    const res = await createPostInstance.execute({
-      title,
-      content,
-      authorId
-    }).catch(err => err)
+      postRepositoryInstance.createPost
+        .mockRejectedValueOnce(new Error(errorMessage))
 
-    expect(res).toBeInstanceOf(Error)
-    expect(res.message).toContain(repoErrorMessage)
+      const res = await createPostInstance.execute({
+        title: validTitle,
+        content: validContent,
+        authorId: validAuthorId
+      })
+
+      expect(postRepositoryInstance.createPost)
+        .toBeCalledTimes(1)
+      expect(postRepositoryInstance.createPost)
+        .toBeCalledWith({
+          title: validTitle,
+          content: validContent,
+          authorId: validAuthorId
+        })
+
+      expect(res).toBeInstanceOf(InternalError)
+      if (!(res instanceof Error)) return
+      expect(res.message).toContain(errorMessage)
+    })
   })
 })
