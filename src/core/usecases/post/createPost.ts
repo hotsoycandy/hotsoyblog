@@ -1,5 +1,6 @@
 import { Post } from 'core/domain/post/Post.entity'
 import { PostRepository } from 'core/domain/post/Post.repository'
+import { CommonError } from 'core/common/errors/CommonError'
 
 export class CreatePost {
   constructor (
@@ -12,7 +13,7 @@ export class CreatePost {
       content: string
       authorId: string
     }
-  ): Promise<Post> {
+  ): Promise<Post | CommonError> {
     return undefined as any
   }
 }
