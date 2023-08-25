@@ -66,7 +66,7 @@ describe('사용자 포스트 생성 테스트', () => {
 
     test('"title"이 50자 초과일 경우 ValidationError 반환', async () => {
       const invalidTitle = faker.internet.password({
-        pattern: /^\w{51}$/
+        length: 51
       })
 
       const res = await createPostInstance.execute({
@@ -87,7 +87,7 @@ describe('사용자 포스트 생성 테스트', () => {
       const errorMessage = faker.lorem.word()
 
       postRepositoryInstance.createPost
-        .mockRejectedValueOnce(new Error(errorMessage))
+        .mockResolvedValueOnce(new InternalError(errorMessage))
 
       const res = await createPostInstance.execute({
         title: validTitle,
@@ -105,7 +105,7 @@ describe('사용자 포스트 생성 테스트', () => {
         })
 
       expect(res).toBeInstanceOf(InternalError)
-      if (!(res instanceof Error)) return
+      if (!(res instanceof InternalError)) return
       expect(res.message).toContain(errorMessage)
     })
   })
