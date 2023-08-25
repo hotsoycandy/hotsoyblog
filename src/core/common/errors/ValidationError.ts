@@ -1,6 +1,6 @@
 import { CommonError } from './CommonError'
 
 export class ValidationError extends CommonError {
-  readonly errorCode = 'ValidationError'
-  readonly statusCode = 400
+  readonly resErrorCode = 'ValidationError'
+  readonly resStatusCode = 400
 }
