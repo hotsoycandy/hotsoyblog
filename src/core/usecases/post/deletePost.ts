@@ -12,6 +12,8 @@ export class DeletePost {
       authorId?: string
     }
   ): Promise<Post | Error> {
-    return undefined as any
+    const post = await this.PostRepo.getPost(targetParams)
+    await this.PostRepo.deletePost(targetParams)
+    return post
   }
 }
