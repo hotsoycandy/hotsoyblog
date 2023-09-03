@@ -1,10 +1,9 @@
-import R from 'ramda'
 // domain cores
 import { Post } from 'core/domain/post/Post.entity'
 import { PostRepository } from 'core/domain/post/Post.repository'
 // utils
-import { pipeP } from 'core/common/utils'
-import { Right, Left } from 'core/common/utils/Either'
+// import { pipeP } from 'core/common/utils'
+import { Maybe } from 'core/common/utils/Maybe'
 // errors
 import type { CommonError } from 'core/common/errors/CommonError'
 import { ValidationError } from 'core/common/errors/ValidationError'
@@ -21,9 +20,10 @@ export class CreatePost {
       authorId: string
     }
   ): Promise<Post | CommonError> {
-    return await new Right(createParams)
-      .map(validatePost)
-      .chain(this.PostRepo.createPost)
+    return await new Maybe(createParams)
+      .map(validatePost<typeof createParams>)
+      .map(this.PostRepo.createPost)
+      .done()
   }
 }
 
@@ -32,10 +32,12 @@ export class CreatePost {
  * - generalize this function
  * - or replace with validation module
  */
-function validatePost (postParams: { title: string }): { title: string } {
+function validatePost <T extends {
+  title: string
+}> (postParams: T): T | ValidationError {
   const { title } = postParams
   if (title.length > 50) {
-    throw new ValidationError(`"${title}"은 50자를 초과할 수 없습니다.`)
+    return new ValidationError('"title"은 50자를 초과할 수 없습니다.')
   }
   return postParams
 }
