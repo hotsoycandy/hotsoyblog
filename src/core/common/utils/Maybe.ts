@@ -5,12 +5,20 @@ export class Maybe <T> {
     this._val = val
   }
 
-  map <FN extends (val: Exclude<T, Error>) => any> (fn: FN): Maybe<ReturnType<FN> | Extract<T, Error>> {
+  map <
+    FN extends (val: T extends Promise<any> ? Exclude<Awaited<T>, Error> : Exclude<T, Error>) => any
+  > (
+    fn: FN
+  ): Maybe<(Extract<T, Promise<any>> extends never ? (ReturnType<FN> | Extract<T, Error>) : (Promise<Awaited<ReturnType<FN>>> | Extract<Awaited<T>, Error>))> {
     if (this._val instanceof Error) {
-      return new Maybe(this._val as Extract<T, Error>)
+      return new Maybe(this._val) as any
     }
 
-    return new Maybe(fn(this._val as Exclude<T, Error>))
+    if (this._val instanceof Promise) {
+      return new Maybe(this._val.then(val => fn(val))) as any
+    }
+
+    return new Maybe(fn(this._val as any))
   }
 
   done (): T {
