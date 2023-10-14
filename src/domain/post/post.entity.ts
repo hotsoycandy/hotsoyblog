@@ -1,0 +1,95 @@
+import { generateID } from 'common/utils/generateID'
+import { ValidationError } from 'common/errors/ValidationError'
+
+export class Post {
+  private readonly _idx: string
+  private _authorId: string
+  private _title: string
+  private _content: string
+  private _commentIds: string[]
+  private readonly _createdAt: Date
+  private _updatedAt: Date
+
+  constructor (createParam: {
+    idx?: string
+    authorId: string
+    title: string
+    content: string
+    commentIds?: string[]
+    createdAt?: Date
+    updatedAt?: Date
+  }) {
+    this._idx = createParam.idx ?? generateID('POST')
+    this._authorId = createParam.authorId
+    this._title = createParam.title
+    this._content = createParam.content
+    this._commentIds = createParam.commentIds ?? []
+    this._createdAt = createParam.createdAt ?? new Date()
+    this._updatedAt = createParam.updatedAt ?? new Date()
+  }
+
+  // idx
+  get idx (): string {
+    return this._idx
+  }
+
+  // authorId
+  get authorId (): string {
+    return this._authorId
+  }
+
+  set authorId (newAuthorId: string) {
+    this._authorId = newAuthorId
+  }
+
+  // title
+  get title (): string {
+    return this._title
+  }
+
+  set title (newTitle: string) {
+    this._title = newTitle
+  }
+
+  // content
+  get content (): string {
+    return this._content
+  }
+
+  set content (newContent: string) {
+    this._content = newContent
+  }
+
+  // commentIds
+  get commentIds (): string[] {
+    return this._commentIds
+  }
+
+  set commentIds (newCommentIds: string[]) {
+    this._commentIds = newCommentIds
+  }
+
+  // createdAt
+  get createdAt (): Date {
+    return this._createdAt
+  }
+
+  // updatedAt
+  get updatedAt (): Date {
+    return this._updatedAt
+  }
+
+  set updatedAt (newUpdatedAt: Date) {
+    this._updatedAt = newUpdatedAt
+  }
+
+  static validatePost <T extends {
+    title: string
+  }> (postParams: T): T | ValidationError {
+    const { title } = postParams
+    if (title.length > 50) {
+      return new ValidationError('"title"은 50자를 초과할 수 없습니다.')
+    }
+    return postParams
+  }
+}
