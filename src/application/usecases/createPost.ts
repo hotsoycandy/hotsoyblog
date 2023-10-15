@@ -20,7 +20,7 @@ export class CreatePost {
   ): Promise<Post | CommonError> {
     return await new Maybe(createParams)
       .map(Post.validatePost<typeof createParams>)
-      .map(this.PostRepo.createPost)
+      .map(async (post) => await this.PostRepo.createPost(post))
       .done()
   }
 }

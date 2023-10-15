@@ -1,86 +1,52 @@
+import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm'
 import { generateID } from 'common/utils/generateID'
 import { ValidationError } from 'common/errors/ValidationError'
 
+@Entity()
 export class Post {
-  private readonly _idx: string
-  private _authorId: string
-  private _title: string
-  private _content: string
-  private _commentIds: string[]
-  private readonly _createdAt: Date
-  private _updatedAt: Date
+  @PrimaryGeneratedColumn()
+  readonly idx: string
+
+  @Column()
+  public authorId: string
+
+  @Column()
+  public title: string
+
+  @Column()
+  public content: string
+
+  @Column({
+    default: 0
+  })
+  public viewCount: number
+
+  @Column({
+    default: () => 'CURRENT_TIMESTAMP'
+  })
+  readonly createdAt: Date
+
+  @Column({
+    default: () => 'CURRENT_TIMESTAMP'
+  })
+  readonly updatedAt: Date
 
   constructor (createParam: {
     idx?: string
     authorId: string
     title: string
     content: string
-    commentIds?: string[]
+    viewCount?: number
     createdAt?: Date
     updatedAt?: Date
   }) {
-    this._idx = createParam.idx ?? generateID('POST')
-    this._authorId = createParam.authorId
-    this._title = createParam.title
-    this._content = createParam.content
-    this._commentIds = createParam.commentIds ?? []
-    this._createdAt = createParam.createdAt ?? new Date()
-    this._updatedAt = createParam.updatedAt ?? new Date()
-  }
-
-  // idx
-  get idx (): string {
-    return this._idx
-  }
-
-  // authorId
-  get authorId (): string {
-    return this._authorId
-  }
-
-  set authorId (newAuthorId: string) {
-    this._authorId = newAuthorId
-  }
-
-  // title
-  get title (): string {
-    return this._title
-  }
-
-  set title (newTitle: string) {
-    this._title = newTitle
-  }
-
-  // content
-  get content (): string {
-    return this._content
-  }
-
-  set content (newContent: string) {
-    this._content = newContent
-  }
-
-  // commentIds
-  get commentIds (): string[] {
-    return this._commentIds
-  }
-
-  set commentIds (newCommentIds: string[]) {
-    this._commentIds = newCommentIds
-  }
-
-  // createdAt
-  get createdAt (): Date {
-    return this._createdAt
-  }
-
-  // updatedAt
-  get updatedAt (): Date {
-    return this._updatedAt
-  }
-
-  set updatedAt (newUpdatedAt: Date) {
-    this._updatedAt = newUpdatedAt
+    this.idx = createParam?.idx ?? generateID('POST')
+    this.authorId = createParam?.authorId
+    this.title = createParam?.title
+    this.content = createParam?.content
+    this.viewCount = createParam?.viewCount ?? 0
+    this.createdAt = createParam?.createdAt ?? new Date()
+    this.updatedAt = createParam?.updatedAt ?? new Date()
   }
 
   static validatePost <T extends {

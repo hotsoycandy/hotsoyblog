@@ -8,6 +8,4 @@ export abstract class CommonError extends Error {
     super(message)
     this.resErrorMessage = resErrorMessage ?? message
   }
-
-  abstract getDefaultMessage (): string
 }

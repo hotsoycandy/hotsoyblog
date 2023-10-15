@@ -1,6 +1,8 @@
 import { startServer } from './server'
+import { connectDB } from './db'
 
 async function startApp (): Promise<void> {
+  await connectDB()
   await startServer()
 }
 
