@@ -1,7 +1,7 @@
 import { z as zod } from 'zod'
 import { Router, RequestHandler } from 'express'
-import { CreatePost } from 'application/usecases/createPost'
-import { PostRepositoryImp } from 'infrastructure/persistence/post.repositoryImp'
+import { CreatePost } from 'application/usecases/posts/createPost'
+import { PostRepositoryImp } from 'infrastructure/post/post.repositoryImp'
 import { ValidationError } from 'common/errors/ValidationError'
 
 const router = Router()
@@ -13,8 +13,7 @@ const a: RequestHandler = (req, res, next) => {
       .object({
         authorId: zod.string(),
         title: zod.string(),
-        content: zod.string(),
-        commentIds: zod.array(zod.string())
+        content: zod.string()
       })
       .strict()
 
