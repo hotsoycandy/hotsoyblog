@@ -1,10 +1,10 @@
-import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm'
+import { Entity, PrimaryColumn, Column } from 'typeorm'
 import { generateID } from 'common/utils/generateID'
 import { ValidationError } from 'common/errors/ValidationError'
 
 @Entity()
 export class Post {
-  @PrimaryGeneratedColumn()
+  @PrimaryColumn()
   readonly idx: string
 
   @Column()
