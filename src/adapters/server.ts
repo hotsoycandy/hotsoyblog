@@ -1,6 +1,7 @@
-import express, { Application, ErrorRequestHandler, Router, RequestHandler } from 'express'
-import postRouter from 'adapters/post.controller'
+import express, { Application, ErrorRequestHandler, RequestHandler } from 'express'
 import { errorHandler } from 'adapters/middlewares/errorHandlingMiddleware'
+import postRouter from 'adapters/post/post.controller'
+import userRouter from 'adapters/user/user.controller'
 
 export async function startServer (): Promise<void> {
   const app = express()
@@ -10,10 +11,10 @@ export async function startServer (): Promise<void> {
     app,
     [
       express.json(),
-      express.urlencoded({ extended: true })])
-  initializeRouters(
-    app,
-    [postRouter])
+      express.urlencoded({ extended: true }),
+      postRouter,
+      userRouter
+    ])
   initializeErrorHandler(
     app,
     errorHandler)
@@ -32,15 +33,6 @@ function initializeMiddlewares (
 ): void {
   middlewares.forEach((middleware) => {
     app.use(middleware)
-  })
-}
-
-function initializeRouters (
-  app: Application,
-  routers: Router[]
-): void {
-  routers.forEach((router) => {
-    app.use(router)
   })
 }
 
