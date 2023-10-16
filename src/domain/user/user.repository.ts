@@ -3,10 +3,14 @@ import { User } from 'domain/user/user.entity'
 
 export abstract class UserRepository {
   abstract createUser (createParams: {
-
+    email: string
+    password: string
+    nickname: string
   }): Promise<User | CommonError>
 
-  abstract getUser (targetParams: {}): Promise<User>
+  abstract getUser (
+    targetParams: { email?: string }
+  ): Promise<User | null>
 
   abstract getUserList (
     targetParams: {},
@@ -23,5 +27,5 @@ export abstract class UserRepository {
 
   abstract updateUser (): Promise<User>
 
-  abstract deleteUser (): Promise<boolean>
+  abstract deleteUser (): Promise<User>
 }
