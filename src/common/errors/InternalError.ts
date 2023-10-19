@@ -8,8 +8,4 @@ export class InternalError extends CommonError {
     super(message)
     this.resErrorMessage = resErrorMessage ?? message
   }
-
-  getDefaultMessage (): string {
-    return 'Internal Server Error'
-  }
 }
