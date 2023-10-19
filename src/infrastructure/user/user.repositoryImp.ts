@@ -2,6 +2,7 @@ import { Repository } from 'typeorm'
 import { User } from 'domain/user/user.entity'
 import { UserRepository } from 'domain/user/user.repository'
 import { AppDataSource } from 'infrastructure/db'
+import { CommonError } from 'common/errors/CommonError'
 
 export class UserRepositoryImp extends UserRepository {
   public repository: Repository<User>
@@ -24,9 +25,14 @@ export class UserRepositoryImp extends UserRepository {
   }
 
   async getUserList (
-    targetParams: {},
-    optionParams: { limit?: number | undefined, page?: string | undefined }
-  ): Promise<{
+    targetUserParams: {
+      idx?: string
+      email?: string
+    },
+    searchOptionParams: {
+      limit?: number | undefined
+      page?: string | undefined
+    }): Promise<{
       list: User[]
       limit: number
       currentPage: string
@@ -35,11 +41,19 @@ export class UserRepositoryImp extends UserRepository {
     throw new Error('Method not implemented.')
   }
 
-  async updateUser (): Promise<User> {
-    throw new Error('Method not implemented.')
+  async updateUser (
+    targetUserIdx: string,
+    newUserDataParams: {
+      email?: string
+      password?: string
+    }
+  ): Promise<User | CommonError> {
+    return null as any
   }
 
-  async deleteUser (): Promise<User> {
-    throw new Error('Method not implemented.')
+  async deleteUser (
+    targetUserIdx: string
+  ): Promise<User | CommonError> {
+    return null as any
   }
 }
