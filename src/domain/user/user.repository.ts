@@ -1,20 +1,19 @@
-import { CommonError } from 'common/errors/CommonError'
 import { User } from 'domain/user/user.entity'
+import { CommonError } from 'common/errors/CommonError'
 
 export abstract class UserRepository {
-  abstract createUser (createParams: {
-    email: string
+  abstract createUser (newUserParams: {
     password: string
     nickname: string
   }): Promise<User | CommonError>
 
   abstract getUser (
-    targetParams: { email?: string }
+    targetUserParams: { email?: string }
   ): Promise<User | null>
 
   abstract getUserList (
-    targetParams: {},
-    optionParams: {
+    targetUserParams: {},
+    searchOptionParams: {
       limit?: number
       page?: string
     }
@@ -25,7 +24,15 @@ export abstract class UserRepository {
     nextPage: string
   }>
 
-  abstract updateUser (): Promise<User>
+  abstract updateUser (
+    targetUserIdx: string,
+    newUserDataParams: {
+      email?: string
+      password?: string
+    }
+  ): Promise<User | CommonError>
 
-  abstract deleteUser (): Promise<User>
+  abstract deleteUser (
+    targetUserIdx: string
+  ): Promise<User | CommonError>
 }
