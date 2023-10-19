@@ -1,4 +1,4 @@
-import { GetPostList } from './getPostList'
+import { GetPostList } from './getPostList.usecase'
 
 import { generateID } from 'common/utils/generateID'
 import { PostRepository } from 'domain/post/post.repository'

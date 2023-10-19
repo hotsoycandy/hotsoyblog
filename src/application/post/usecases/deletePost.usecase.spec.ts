@@ -1,6 +1,6 @@
 import { faker } from '@faker-js/faker'
 
-import { DeletePost } from './deletePost'
+import { DeletePost } from './deletePost.usecase'
 
 import { generateID } from 'common/utils/generateID'
 import { PostRepository } from 'domain/post/post.repository'

@@ -1,4 +1,4 @@
-import { UpdatePost } from './updatePost'
+import { UpdatePost } from './updatePost.usecase'
 
 import { generateID } from 'common/utils/generateID'
 import { PostRepository } from 'domain/post/post.repository'

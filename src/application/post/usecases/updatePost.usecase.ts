@@ -1,5 +1,5 @@
-import { Post } from 'core/domain/post/post.entity'
-import { PostRepository } from 'core/domain/post/post.repository'
+import { Post } from 'domain/post/post.entity'
+import { PostRepository } from 'domain/post/post.repository'
 
 export class UpdatePost {
   constructor (

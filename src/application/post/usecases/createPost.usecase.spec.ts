@@ -1,10 +1,10 @@
 // external modules
 import { faker } from '@faker-js/faker'
 // use case
-import { CreatePost } from './createPost'
+import { CreatePost } from './createPost.usecase'
 // domain cores
-import { Post } from 'core/domain/post/post.entity'
-import { PostRepository } from 'core/domain/post/post.repository'
+import { Post } from 'domain/post/post.entity'
+import { PostRepository } from 'domain/post/post.repository'
 // utils
 import { generateID } from 'common/utils/generateID'
 // errors
