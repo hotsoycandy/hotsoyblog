@@ -8,7 +8,10 @@ export abstract class UserRepository {
   }): Promise<User | CommonError>
 
   abstract getUser (
-    targetUserParams: { email?: string }
+    targetUserParams: {
+      email?: string
+      password?: string
+    }
   ): Promise<User | null>
 
   abstract getUserList (
