@@ -1,7 +1,9 @@
-import passport, { AuthenticateCallback } from 'passport'
-import { RequestHandler } from 'express'
-import { ZodAny } from 'zod'
+import R from 'ramda'
+import passport from 'passport'
+import { RequestHandler, Router as ExpressRouter } from 'express'
+import { AnyZodObject } from 'zod'
 import { ValidationError } from 'common/errors/ValidationError'
+// import { UnauthorizedError } from 'common/errors/UnauthorizedError'
 
 export default class Router {
   constructor (
@@ -12,24 +14,31 @@ export default class Router {
 
   addJwtAuth (): Router {
     this.handlers.push(
-      passport.authenticate('jwt', { session: false })
+      passport.authenticate('jwt')
     )
 
     return this
   }
 
-  addValidation (validator: ZodAny): Router {
+  addValidation (validator: { body: AnyZodObject }): Router {
     this.handlers.push(
       (req, res, next) => {
-        const validationResult = validator.safeParse(req.body)
+        const validationResult = validator.body.safeParse(req.body)
         if (validationResult.success) return next()
 
-        const validationErrorMessage =
-          validationResult
-            .error
-            .errors
-            .map(err => `"${err.path.join('.')}": ${err.message}`)
-            .join('. ')
+        const validationErrorMessage: string = R.pipe(
+          R.pick(['formErrors', 'fieldErrors']),
+          R.evolve({
+            formErrors: R.identity,
+            fieldErrors: R.pipe(
+              R.toPairs,
+              R.map(([key, values = []]) => `"${key}: ${(values as string[]).join(', ')}`),
+              R.join('. ')
+            )
+          }),
+          R.values,
+          R.join('. ')
+        )(validationResult.error.flatten())
 
         next(new ValidationError(validationErrorMessage))
       }
@@ -38,8 +47,12 @@ export default class Router {
     return this
   }
 
-  async addHandler (handler: Promise<any>): Router {
+  addHandler (handler: RequestHandler): Router {
     this.handlers.push(handler)
     return this
+  }
+
+  getRouter (): ExpressRouter {
+    return ExpressRouter()[this.method](this.path, this.handlers)
   }
 }
