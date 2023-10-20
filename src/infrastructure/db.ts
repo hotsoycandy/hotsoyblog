@@ -11,7 +11,7 @@ export const AppDataSource = new DataSource({
   password: 'ZWADrGj3gawzlTq',
   database: 'hotsoyblog',
   synchronize: true,
-  logging: true,
+  logging: process.env['NODE_ENV'] === 'development',
   entities: [User, Post],
   migrations: [],
   subscribers: []
