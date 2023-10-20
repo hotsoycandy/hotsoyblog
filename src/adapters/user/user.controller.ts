@@ -1,47 +1,58 @@
+import { Router as ExpressRouter } from 'express'
 import { z as zod } from 'zod'
-import { Router, RequestHandler } from 'express'
+import { UserRepositoryMaria } from 'infrastructure/user/persistences/user.repositoryMaria'
+import Router from 'adapters/lib/Router'
 import { Signup } from 'application/user/usecases/signup.usecase'
-import { UserRepositoryImp } from 'infrastructure/user/user.repositoryImp'
-import { ValidationError } from 'common/errors/ValidationError'
+import { Signin } from 'application/user/usecases/signin.usecase'
+import { UserDTO } from './user.dto'
+import { CommonError } from 'common/errors/CommonError'
 
-const router = Router()
-const signupInstance = new Signup(new UserRepositoryImp())
-
-const a: RequestHandler = (req, res, next) => {
-  const validator =
-    zod
+const signupRouter = new Router('post', '/signup', [])
+  .addValidation({
+    body: zod
       .object({
         email: zod.string(),
         password: zod.string(),
         nickname: zod.string()
       })
       .strict()
+  })
+  .addHandler((req, res, next) => {
+    new Signup(new UserRepositoryMaria())
+      .execute(req.body)
+      .then(user => {
+        if (user instanceof CommonError) return next(user)
 
-  const validationResult = validator.safeParse(req.body)
-  if (validationResult.success) return next()
+        return res.json(new UserDTO(user))
+      })
+      .catch(err => next(err))
+  })
 
-  const validationErrorMessage =
-    validationResult
-      .error
-      .errors
-      .map(err => `"${err.path.join('.')}": ${err.message}`)
-      .join('. ')
-  next(new ValidationError(validationErrorMessage))
-}
+const signinRouter = new Router('post', '/signin', [])
+  .addValidation({
+    body: zod
+      .object({
+        email: zod.string(),
+        password: zod.string()
+      })
+      .strict()
+  })
+  .addHandler((req, res, next) => {
+    new Signin(new UserRepositoryMaria())
+      .execute(req.body)
+      .then((result) => {
+        if (result instanceof CommonError) return next(result)
 
-const b: RequestHandler = (req, res, next) => {
-  signupInstance.execute(req.body)
-    .then(result => {
-      return res.json(result)
-    })
-    .catch(err => {
-      next(err)
-    })
-}
+        const { user, token } = result
+        return res.json({ user: new UserDTO(user), token })
+      })
+      .catch(err => next(err))
+  })
 
-router.post('/signup', [a, b])
-
-const userRouter = Router()
-userRouter.use('/users', router)
+const userRouter = ExpressRouter()
+userRouter.use('/users', [
+  signupRouter.getRouter(),
+  signinRouter.getRouter()
+])
 
 export default userRouter
