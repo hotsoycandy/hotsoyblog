@@ -1,6 +1,6 @@
 import { z as zod } from 'zod'
 import { Router, RequestHandler } from 'express'
-import { Signup } from 'application/usecases/users/signup'
+import { Signup } from 'application/user/usecases/signup.usecase'
 import { UserRepositoryImp } from 'infrastructure/user/user.repositoryImp'
 import { ValidationError } from 'common/errors/ValidationError'
 
