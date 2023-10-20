@@ -1,11 +1,16 @@
 import express, { Application, ErrorRequestHandler, RequestHandler } from 'express'
 import { errorHandler } from 'adapters/middlewares/errorHandlingMiddleware'
+import { useLocalAuthMiddleware } from 'adapters/middlewares/localAuthMiddleware'
+import { useJwtAuthMiddleware } from 'adapters/middlewares/jwtAuthMiddleware'
 import postRouter from 'adapters/post/post.controller'
 import userRouter from 'adapters/user/user.controller'
 
 export async function startServer (): Promise<void> {
   const app = express()
   const port = 3000
+
+  useLocalAuthMiddleware()
+  useJwtAuthMiddleware()
 
   initializeMiddlewares(
     app,
