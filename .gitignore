@@ -129,5 +129,5 @@ dist
 .yarn/install-state.gz
 .pnp.*
 
-# ignore evironment files
-*.env
+# ignore evironment file
+.env

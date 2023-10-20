@@ -10,7 +10,7 @@
   },
   "scripts": {
     "start": "ts-node ./src/index.ts",
-    "start:dev": "cross-env ENV_PATH=development.env nodemon ./src/index.ts",
+    "start:dev": "nodemon ./src/index.ts",
     "test": "yarn test:lint && yarn test:unit",
     "test:lint": "ts-standard && tsc --noEmit",
     "test:unit": "jest"
