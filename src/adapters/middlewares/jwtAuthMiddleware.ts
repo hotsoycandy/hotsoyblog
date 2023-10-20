@@ -1,15 +1,9 @@
-import {
-  Strategy as JwtStrategy,
-  ExtractJwt
-} from 'passport-jwt'
+import passport from 'passport'
+import { Strategy as JwtStrategy, ExtractJwt } from 'passport-jwt'
 
-const options = {
+passport.use(new JwtStrategy({
   jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
-  secretOrKey: 'secret',
-  issuer: 'zifori.me',
-  audience: 'asdasd'
-}
-
-export const localAuthMiddleware = new JwtStrategy(options, function (username, password, cb) {
+  secretOrKey: 'secret'
+}, (username, password, cb) => {
   return cb(null, {})
-})
+}))
