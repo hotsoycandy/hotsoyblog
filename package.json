@@ -9,8 +9,8 @@
     "node": "^18"
   },
   "scripts": {
-    "start": "ts-node ./src/index.ts",
-    "start:dev": "nodemon ./src/index.ts",
+    "start": "ts-node -r dotenv/config ./src/index.ts",
+    "start:dev": "nodemon --exec yarn start",
     "test": "yarn test:lint && yarn test:unit",
     "test:lint": "ts-standard && tsc --noEmit",
     "test:unit": "jest"
