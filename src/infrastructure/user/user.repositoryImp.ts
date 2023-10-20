@@ -20,7 +20,7 @@ export class UserRepositoryImp extends UserRepository {
     return await this.repository.save(createParams)
   }
 
-  async getUser (targetParams: { email?: string }): Promise<User | null> {
+  async getUser (targetParams: { email?: string, password?: string }): Promise<User | null> {
     return await this.repository.findOne({ where: targetParams })
   }
 
