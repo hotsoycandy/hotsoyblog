@@ -12,9 +12,7 @@ export const AppDataSource = new DataSource({
   database: process.env['DB_NAME'],
   synchronize: true,
   logging: process.env['NODE_ENV'] === 'development',
-  entities: [User, Post],
-  migrations: [],
-  subscribers: []
+  entities: [User, Post]
 })
 
 export async function connectDB (): Promise<void> {
