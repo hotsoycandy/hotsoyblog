@@ -10,7 +10,7 @@
   },
   "scripts": {
     "start": "ts-node -r dotenv/config ./src/index.ts",
-    "start:dev": "nodemon --exec yarn start",
+    "start:dev": "nodemon -r dotenv/config ./src/index.ts",
     "test": "yarn test:lint && yarn test:unit",
     "test:lint": "ts-standard && tsc --noEmit",
     "test:unit": "jest"
