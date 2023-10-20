@@ -4,7 +4,7 @@ import { UserRepository } from 'domain/user/user.repository'
 import { AppDataSource } from 'infrastructure/db'
 import { CommonError } from 'common/errors/CommonError'
 
-export class UserRepositoryImp extends UserRepository {
+export class UserRepositoryMaria extends UserRepository {
   public repository: Repository<User>
 
   constructor () {

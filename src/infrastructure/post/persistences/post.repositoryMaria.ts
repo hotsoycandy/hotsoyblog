@@ -3,7 +3,7 @@ import { AppDataSource } from 'infrastructure/db'
 import { Post } from 'domain/post/post.entity'
 import { PostRepository } from 'domain/post/post.repository'
 
-export class PostRepositoryImp extends PostRepository {
+export class PostRepositoryMaria extends PostRepository {
   public repository: Repository<Post>
 
   constructor () {
