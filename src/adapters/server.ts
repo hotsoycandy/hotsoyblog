@@ -1,7 +1,7 @@
 import express, { Application, ErrorRequestHandler, RequestHandler } from 'express'
 import { errorHandler } from 'adapters/middlewares/errorHandlingMiddleware'
-import { useLocalAuthMiddleware } from 'adapters/middlewares/localAuthMiddleware'
-import { useJwtAuthMiddleware } from 'adapters/middlewares/jwtAuthMiddleware'
+import { useLocalAuthMiddleware } from 'adapters/middlewares/auth/localAuthMiddleware'
+import { useJwtAuthMiddleware } from 'adapters/middlewares/auth/jwtAuthMiddleware'
 import postRouter from 'adapters/post/post.controller'
 import userRouter from 'adapters/user/user.controller'
 
