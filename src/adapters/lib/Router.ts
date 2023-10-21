@@ -3,6 +3,7 @@ import { RequestHandler, Router as ExpressRouter } from 'express'
 import passport from 'passport'
 import { z as zod, AnyZodObject } from 'zod'
 import { ValidationError } from 'common/errors/ValidationError'
+import { zodErrorToMessages } from 'common/utils/zod'
 // import { UnauthorizedError } from 'common/errors/UnauthorizedError'
 
 export default class Router {
@@ -50,36 +51,20 @@ export default class Router {
         R.pipe(
           R.always(req),
           R.pickAll(['body', 'query', 'params']),
-          R.mapObjIndexed((value: object, field: ValidateTargetField) => {
+          R.mapObjIndexed((value: object, field: ValidateTargetField): string[] => {
             const validationResult = validator[field].safeParse(value)
             return validationResult.success
-              ? {}
-              : validationResult.error.flatten()
-          }),
-          R.pickBy(R.complement(R.equals({}))),
-          R.mapObjIndexed((value: object, field: ValidateTargetField) => {
-            return R.pipe(
-              R.always(value),
-              R.pick(['formErrors', 'fieldErrors']),
-              R.evolve({
-                formErrors: R.map((message: string) => `"${field}": ${message}`),
-                fieldErrors: R.pipe(
-                  R.toPairs,
-                  R.map(([key, values = []]) => `"${field}.${key}": ${(values as string[]).join(', ')}`)
-                )
-              }),
-              R.values
-            )()
+              ? []
+              : zodErrorToMessages(validationResult.error, field)
           }),
           R.values,
           R.flatten,
-          R.join(', '),
           R.ifElse(
-            R.equals(''),
+            R.propSatisfies(R.equals(0), 'length'),
             R.always(null),
-            (messages: string) => new ValidationError(messages)
+            (messages: string[]) => new ValidationError(messages.join('. '))
           ),
-          next
+          (result) => next(result)
         )()
       })
 
