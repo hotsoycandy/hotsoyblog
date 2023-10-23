@@ -1,5 +1,4 @@
 import { Post } from 'domain/post/post.entity'
-import { CommonError } from 'common/errors/CommonError'
 
 export abstract class PostRepository {
   abstract createPost (
@@ -8,7 +7,7 @@ export abstract class PostRepository {
       content: string
       authorId: string
     }
-  ): Promise<Post | CommonError>
+  ): Promise<Post>
 
   abstract getPost (
     targetParams: {
