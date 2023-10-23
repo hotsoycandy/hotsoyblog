@@ -20,7 +20,14 @@ export class UserRepositoryMaria extends UserRepository {
     return await this.repository.save(createParams)
   }
 
-  async getUser (targetParams: { email?: string, password?: string }): Promise<User | null> {
+  async getUser (
+    targetParams: {
+      idx?: string
+      email?: string
+      password?: string
+      nickname?: string
+    }
+  ): Promise<User | null> {
     return await this.repository.findOne({ where: targetParams })
   }
 
@@ -32,7 +39,8 @@ export class UserRepositoryMaria extends UserRepository {
     searchOptionParams: {
       limit?: number | undefined
       page?: string | undefined
-    }): Promise<{
+    }
+  ): Promise<{
       list: User[]
       limit: number
       currentPage: string
