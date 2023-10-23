@@ -1,4 +1,4 @@
-import { ZodError } from 'zod'
+import { z as zod, ZodError, AnyZodObject } from 'zod'
 import R from 'ramda'
 
 export const zodErrorToMessages = (err: ZodError, field: string): string[] =>
@@ -14,3 +14,6 @@ export const zodErrorToMessages = (err: ZodError, field: string): string[] =>
     R.values,
     R.flatten
   )(err.flatten())
+
+export const createEmptyZodObject =
+  (): AnyZodObject => zod.object({}).strict()
