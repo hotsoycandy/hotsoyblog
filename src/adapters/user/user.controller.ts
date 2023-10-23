@@ -7,7 +7,7 @@ import { Signin } from 'application/user/usecases/signin.usecase'
 import { UserDTO } from './user.dto'
 import { CommonError } from 'common/errors/CommonError'
 
-const signupRouter = new Router('post', '/signup', [])
+const signupAPI = new Router('post', '/signup', [])
   .addValidation({
     body: zod
       .object({
@@ -28,7 +28,7 @@ const signupRouter = new Router('post', '/signup', [])
       .catch(err => next(err))
   })
 
-const signinRouter = new Router('post', '/signin', [])
+const signinAPI = new Router('post', '/signin', [])
   .addValidation({
     body: zod
       .object({
@@ -51,8 +51,8 @@ const signinRouter = new Router('post', '/signin', [])
 
 const userRouter = ExpressRouter()
 userRouter.use('/users', [
-  signupRouter.getRouter(),
-  signinRouter.getRouter()
+  signupAPI.getRouter(),
+  signinAPI.getRouter()
 ])
 
 export default userRouter
