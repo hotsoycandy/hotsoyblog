@@ -1,8 +1,9 @@
-import jwt from 'jsonwebtoken'
+import R from 'ramda'
 import { CommonError } from 'common/errors/CommonError'
 import { UnauthorizedError } from 'common/errors/UnauthorizedError'
 import { User } from 'domain/user/user.entity'
 import { UserRepository } from 'domain/user/user.repository'
+import { createJwtToken } from '../services/createJwtToken'
 
 export class Signin {
   constructor (
@@ -13,24 +14,26 @@ export class Signin {
     email: string
     password: string
   }): Promise<{ user: User, token: string } | CommonError> {
-    const { email, password } = loginParams
+    const addToken = (user: User): { user: User, token: string } =>
+      R.pipe(
+        R.objOf('user'),
+        R.assoc('token', createJwtToken(user))
+      ) as any
 
-    const user = await this.UserRepo.getUser({
-      email,
-      password: User.createHashedPassword(password)
-    })
-
-    if (user === null) {
-      throw new UnauthorizedError('아이디와 비밀번호 정보가 올바르지 않습니다.')
+    const nullChecking = (user: User | null): User => {
+      if (R.isNil(user)) {
+        throw new UnauthorizedError('아이디와 비밀번호 정보가 올바르지 않습니다.')
+      }
+      return user
     }
 
-    const token = jwt.sign({
-      idx: user.idx,
-      email: user.email
-    }, process.env['JWT_SECRET'] ?? '', {
-      expiresIn: '1d'
-    })
-
-    return { user, token }
+    return await Promise
+      .resolve(loginParams)
+      .then(R.evolve({
+        password: User.createHashedPassword
+      }))
+      .then(this.UserRepo.getUser)
+      .then(nullChecking)
+      .then(addToken)
   }
 }

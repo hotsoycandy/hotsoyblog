@@ -9,8 +9,10 @@ export abstract class UserRepository {
 
   abstract getUser (
     targetUserParams: {
+      idx?: string
       email?: string
       password?: string
+      nickname?: string
     }
   ): Promise<User | null>
 
