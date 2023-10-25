@@ -10,11 +10,14 @@ export function useJwtAuthMiddleware (): void {
     jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
     secretOrKey: process.env['JWT_SECRET']
   }, (jwtPayload, cb) => {
-    ;(async () => {
-      const user = await getUser.execute({ idx: jwtPayload.idx })
-      user !== null
-        ? cb(null, user)
-        : cb(null, false, { message: '다시 로그인 해주세요.' })
-    })().catch(err => cb(err))
+    getUser.execute({ idx: jwtPayload.idx })
+      .then(user => {
+        user !== null
+          ? cb(null, user)
+          : cb(null, false, { message: '다시 로그인 해주세요.' })
+      })
+      .catch(err => {
+        cb(err)
+      })
   }))
 }
