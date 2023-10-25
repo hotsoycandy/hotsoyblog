@@ -19,7 +19,7 @@ export class PostRepositoryMaria extends PostRepository {
   }
 
   async createPost (post: Post): Promise<Post> {
-    return await this.repository.save(post)
+    return new Post(await this.repository.save(post))
   }
 
   async updatePost (): Promise<any> {
