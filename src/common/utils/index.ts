@@ -1,7 +1,7 @@
 import R from 'ramda'
 
 export const pipeP =
-  R.pipeWith((fun, previousResult) =>
+  R.pipeWith((fn, previousResult) =>
     (previousResult?.then !== undefined)
-      ? previousResult.then(fun)
-      : fun(previousResult))
+      ? previousResult.then(fn)
+      : fn(previousResult))
