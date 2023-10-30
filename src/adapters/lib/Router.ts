@@ -14,9 +14,7 @@ export default class Router {
   ) {}
 
   addJwtAuth (): Router {
-    this.handlers.push(
-      passport.authenticate('jwt')
-    )
+    this.handlers.push(passport.authenticate('jwt'))
 
     return this
   }
