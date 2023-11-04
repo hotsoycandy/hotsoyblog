@@ -8,5 +8,5 @@ async function startApp (): Promise<void> {
 
 startApp()
   .catch(err => {
-    console.error('The error is occured while application is running. The error:', err)
+    console.error('The error is occured while app is running. The error:', err)
   })
