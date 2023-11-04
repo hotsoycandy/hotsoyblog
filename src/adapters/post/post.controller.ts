@@ -19,7 +19,7 @@ const createPostAPI = new Router('post', '')
     new CreatePost(new PostRepositoryMaria())
       .execute({
         ...req.body,
-        authorId: (req.user as any).idx
+        authorId: req.user.idx
       })
       .then((post) => {
         return res.json(post)

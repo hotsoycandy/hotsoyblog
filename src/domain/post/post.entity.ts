@@ -49,12 +49,12 @@ export class Post {
     this.updatedAt = createParam?.updatedAt ?? new Date()
   }
 
-  static validatePost <T extends {
+  static validate <T extends {
     title: string
-  }> (postParams: T): T | ValidationError {
+  }> (postParams: T): T {
     const { title } = postParams
     if (title.length > 50) {
-      return new ValidationError('"title"은 50자를 초과할 수 없습니다.')
+      throw new ValidationError('"title"은 50자를 초과할 수 없습니다.')
     }
     return postParams
   }

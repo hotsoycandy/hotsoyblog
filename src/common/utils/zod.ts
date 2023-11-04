@@ -1,5 +1,7 @@
-import { z as zod, ZodError, AnyZodObject } from 'zod'
 import R from 'ramda'
+import { z as zod, ZodError, ZodObject } from 'zod'
+
+export type EmptyZodObject = ZodObject<{}, 'strict', zod.ZodTypeAny, {}, {}>
 
 export const zodErrorToMessages = (err: ZodError, field: string): string[] =>
   R.pipe(
@@ -16,4 +18,4 @@ export const zodErrorToMessages = (err: ZodError, field: string): string[] =>
   )(err.flatten())
 
 export const createEmptyZodObject =
-  (): AnyZodObject => zod.object({}).strict()
+  (): EmptyZodObject => zod.object({}).strict()

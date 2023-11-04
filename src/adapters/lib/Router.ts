@@ -1,69 +1,73 @@
 import R from 'ramda'
-import { RequestHandler, Router as ExpressRouter } from 'express'
-import passport from 'passport'
+import passport, { AuthenticateCallback } from 'passport'
+import { RequestHandler, Router as ExpressRouter, NextFunction, Request, Response } from 'express'
 import { z as zod, AnyZodObject } from 'zod'
 import { ValidationError } from 'common/errors/ValidationError'
-import { zodErrorToMessages } from 'common/utils/zod'
-// import { UnauthorizedError } from 'common/errors/UnauthorizedError'
+import { EmptyZodObject, createEmptyZodObject, zodErrorToMessages } from 'common/utils/zod'
+import { UnauthorizedError } from 'common/errors/UnauthorizedError'
+import { User } from 'domain/user/user.entity'
 
-export default class Router {
+type ValidatorField = 'body' | 'query' | 'params'
+
+export default class Router <Auth extends boolean = false> {
   constructor (
-    public readonly method: 'post' | 'get' | 'put' | 'delete',
-    public readonly path: string,
-    public handlers: RequestHandler[]
+    private readonly method: 'post' | 'get' | 'put' | 'delete',
+    private readonly path: string,
+    private readonly handlers: RequestHandler[] = []
   ) {}
 
-  addJwtAuth (): Router {
-    this.handlers.push(
-      passport.authenticate('jwt')
-    )
+  addJwtAuth (): Router<true> {
+    this.addHandler((req, res, next) => {
+      const auth: AuthenticateCallback = (err, user, info) => {
+        if (!R.isNil(err)) { return next(err) }
+        if (user === false) { return next(new UnauthorizedError('다시 로그인 해주세요.')) }
+        req.user = user as any ?? undefined
+        next()
+      }
 
-    return this
+      passport.authenticate('jwt', auth)(req, res, next)
+    })
+
+    return new Router(this.method, this.path, this.handlers)
   }
 
-  addValidation (
-    {
-      body: bodyValidator = zod
-        .object({})
-        .strict(),
-      query: queryValidator = zod
-        .object({})
-        .strict(),
-      params: paramsValidator = zod
-        .object({})
-        .strict()
-    }: {
-      body?: AnyZodObject
-      query?: AnyZodObject
-      params?: AnyZodObject
-    }
-  ): Router {
-    type ValidateTargetField = 'body' | 'query' | 'params'
+  addValidator <
+  NewBodyValidator extends AnyZodObject = EmptyZodObject
+  > ({
+    body = createEmptyZodObject(),
+    query = createEmptyZodObject(),
+    params = createEmptyZodObject()
+  }: {
+    body: NewBodyValidator
+    query: AnyZodObject
+    params: AnyZodObject
+  }): Router<Auth, NewBodyValidator> {
+    const validator = { body, query, params }
 
-    const validator = {
-      body: bodyValidator,
-      query: queryValidator,
-      params: paramsValidator
+    const validate = (
+      targetObj: object,
+      field: ValidatorField
+    ): string[] => {
+      const validationResult = validator[field].safeParse(targetObj)
+      return validationResult.success
+        ? []
+        : zodErrorToMessages(validationResult.error, field)
     }
 
-    this.handlers.push(
+    this.addHandler(
       (req, res, next) => {
         R.pipe(
           R.always(req),
           R.pickAll(['body', 'query', 'params']),
-          R.mapObjIndexed((value: object, field: ValidateTargetField): string[] => {
-            const validationResult = validator[field].safeParse(value)
-            return validationResult.success
-              ? []
-              : zodErrorToMessages(validationResult.error, field)
-          }),
+          R.mapObjIndexed(validate),
           R.values,
           R.flatten,
-          R.ifElse(
-            R.propSatisfies(R.equals(0), 'length'),
-            R.always(null),
-            (messages: string[]) => new ValidationError(messages.join('. '))
-          ),
+          (messages: string[]) => {
+            if (messages.length === 0) {
+              return null
+            }
+            return new ValidationError(messages.join('. '))
+          },
           (result) => next(result)
         )()
       })
@@ -71,8 +75,18 @@ export default class Router {
     return this
   }
 
-  addHandler (handler: RequestHandler): Router {
-    this.handlers.push(handler)
+  addHandler (
+    handler: (
+      req: Request<
+      zod.infer<ParamsValidator>,
+      zod.infer<BodyValidator>,
+      zod.infer<QueryValidator>
+      > & { user: Auth extends true ? User : undefined },
+      res: Response,
+      next: NextFunction
+    ) => void
+  ): this {
+    this.handlers.push(handler as RequestHandler)
     return this
   }
 

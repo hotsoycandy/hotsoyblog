@@ -1,10 +1,8 @@
+// utils
+import { Railway } from 'common/utils/Railway'
 // domain cores
 import { Post } from 'domain/post/post.entity'
 import { PostRepository } from 'domain/post/post.repository'
-// utils
-import { Maybe } from 'common/utils/Maybe'
-// errors
-import type { CommonError } from 'common/errors/CommonError'
 
 export class CreatePost {
   constructor (
@@ -17,10 +15,10 @@ export class CreatePost {
       content: string
       authorId: string
     }
-  ): Promise<Post | CommonError> {
-    return await new Maybe(createParams)
-      .map(Post.validatePost<typeof createParams>)
-      .map(async (post) => await this.PostRepo.createPost(post))
+  ): Promise<Post> {
+    return await new Railway(createParams)
+      .map(Post.validate<typeof createParams>)
+      .map(this.PostRepo.createPost)
       .done()
   }
 }

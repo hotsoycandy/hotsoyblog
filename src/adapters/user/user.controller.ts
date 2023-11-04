@@ -7,8 +7,8 @@ import { Signin } from 'application/user/usecases/signin.usecase'
 import { UserDTO } from './user.dto'
 import { CommonError } from 'common/errors/CommonError'
 
-const signupAPI = new Router('post', '/signup', [])
-  .addValidation({
+const signupAPI = new Router('post', '/signup')
+  .addValidator({
     body: zod
       .object({
         email: zod.string(),
@@ -28,8 +28,8 @@ const signupAPI = new Router('post', '/signup', [])
       .catch(err => next(err))
   })
 
-const signinAPI = new Router('post', '/signin', [])
-  .addValidation({
+const signinAPI = new Router('post', '/signin')
+  .addValidator({
     body: zod
       .object({
         email: zod.string(),

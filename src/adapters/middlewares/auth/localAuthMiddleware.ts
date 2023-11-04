@@ -11,7 +11,11 @@ export function useLocalAuthMiddleware (): void {
     passwordField: 'password'
   }, (email, password, cb) => {
     ;(async () => {
-      const user = await getUser.execute({ email, password })
+      new Maybe({ email, password })
+        .map(getUser.execute)
+        .getOrElse()
+
+      const user = await ({ email, password })
       user !== null
         ? cb(null, user)
         : cb(null, false, { message: '아이디 또는 비밀번호가 일치하지 않습니다.' })
