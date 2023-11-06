@@ -6,7 +6,7 @@ export { SEARCH_ENGINE } from 'src/common/lib/search-engine'
 const mocks = {
   [SEARCH_ENGINE.GOOGLE]: path.join(
     __dirname,
-    './google-javascript.html')
+    './google-javascript.txt')
 }
 
 export async function getHTMLMock (engine: SEARCH_ENGINE): Promise<string> {
