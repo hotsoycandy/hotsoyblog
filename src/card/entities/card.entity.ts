@@ -5,4 +5,8 @@ export class Card {
     public originURL: string,
     public favicon: string
   ) {}
+
+  static extractCardsFromHTML (html: string): Card[] {
+    return []
+  }
 }

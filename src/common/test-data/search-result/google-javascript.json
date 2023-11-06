@@ -1,0 +1,56 @@
+[{
+  "title": "Mozilla Developer",
+  "description": "2023. 10. 25. — JavaScript (JS)는 가벼운, 인터프리터 혹은 just-in-time 컴파일 프로그래밍 언어로, 일급 함수를 지원합니다. 웹 페이지를 위한 스크립트 언어로 잘 ...",
+  "originURL": "https://developer.mozilla.org/ko/docs/Web/JavaScript",
+  "favicon": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAMAAABEpIrGAAAAeFBMVEUVFBoUExkTEhgZGR8eHSMAAACHhona2tvFxcbNzc6xsLIQDxe/v8CpqasAAATq6uv///+goKL5+fnU1NUMCxSWlphhYGOAf4JRUVQAAAmMi42Pj5FYV1pDQ0bw8PAEAQ25ubpoaGsiISc1NDjh4eJwcHI7Oz4SERwyceKhAAAA/UlEQVR4AdXSV4LDIAwEUMCRCa6TuNvp9f43XKTt0QkyX3h4boB5s1gXIyMeWD1vkyQx3DubrIxRglK/Dlkeeyp86dNKgRqbbdM6k6+ADht6mXex7gXQAD9oQB3CyMBNDeZUATsFLDsG7b7e9rMC7Xg4jPIKSuGPiwL84lwAnZCRBrSOFYOcgL0GVmoGxxEgDaYzDnRkIG/QQGoGx4vHUCnQXm+4TwzojNujVWCSWkCHQFYBKlGQFVDjXhkNpGbwBNpcgfYKkGMQFgQyClCHhkwEaAI6Dewx8/eJ9yMURRhbY6b7y4HJ21bOWp7nbS7HM3dc/MR+XbqYn+KN8gGDfhY9jMMHpgAAAABJRU5ErkJggg=="
+}, {
+  "title": "Mozilla Developer",
+  "description": "2023. 8. 28. — JavaScript는 가볍고, 인터프리터를 사용하는 프로그래밍 언어입니다. 웹 브라우저는 JavaScript 코드를 원문 텍스트 형식으로 입력받아 실행합니다.",
+  "originURL": "https://developer.mozilla.org/ko/docs/Learn/JavaScript/First_steps/What_is_JavaScript",
+  "favicon": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAMAAABEpIrGAAAAeFBMVEUVFBoUExkTEhgZGR8eHSMAAACHhona2tvFxcbNzc6xsLIQDxe/v8CpqasAAATq6uv///+goKL5+fnU1NUMCxSWlphhYGOAf4JRUVQAAAmMi42Pj5FYV1pDQ0bw8PAEAQ25ubpoaGsiISc1NDjh4eJwcHI7Oz4SERwyceKhAAAA/UlEQVR4AdXSV4LDIAwEUMCRCa6TuNvp9f43XKTt0QkyX3h4boB5s1gXIyMeWD1vkyQx3DubrIxRglK/Dlkeeyp86dNKgRqbbdM6k6+ADht6mXex7gXQAD9oQB3CyMBNDeZUATsFLDsG7b7e9rMC7Xg4jPIKSuGPiwL84lwAnZCRBrSOFYOcgL0GVmoGxxEgDaYzDnRkIG/QQGoGx4vHUCnQXm+4TwzojNujVWCSWkCHQFYBKlGQFVDjXhkNpGbwBNpcgfYKkGMQFgQyClCHhkwEaAI6Dewx8/eJ9yMURRhbY6b7y4HJ21bOWp7nbS7HM3dc/MR+XbqYn+KN8gGDfhY9jMMHpgAAAABJRU5ErkJggg=="
+}, {
+  "title": "Amazon Web Services",
+  "description": "JavaScript는 개발자가 대화식 웹 페이지를 만들기 위해 사용하는 프로그래밍 언어입니다. 소셜 미디어 피드 새로 고침부터 애니메이션 및 대화형 지도 표시에 이르기 ...",
+  "originURL": "https://aws.amazon.com/ko/what-is/javascript/",
+  "favicon": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAMAAABEpIrGAAAAyVBMVEUjLz4gLTwSIjQOIDIZJzgYJjdGTlmTl5ykp6tpb3cAGS45Qk5gZ3AyPEkqNUOKjpRaYWv////c3d9SWWMAFSu0trqanqP09fbS09V1eoIAABkAAACoq7AAAA7k5ebFx8qBhYsAABwACiV+g4pBSlW4u78AABQAACEAFyy2uLwdLT8ACS4AJkATKj9gSTUXKz9LPzi5dSDjihOOYCp4VTDpjgpmTDJWRTXIfRvTgxZCOzn7lwCrbiUAI0AvNDuZZSeIXS3/oQBwUTHffSETAAABKUlEQVR4AeyOhWHAIBBFIQrE+Ffi7rL/fnVhiD7kXNg/NtxxPcY99v2+bAs/CIVUUezx5P2l0mOZkFaGp0EEIfFicsSqgFeWFWorI/WatkOPohkgmmqc0M8LZ3+4QRF2aKtKoaAG64Yh4461Qo1qH3BM0OWGANzVIyD93wRD1PYF5hTjfmIk46vlGMj8JqgROgOChTDNFbJrFVriVr8JPCHQNm7uWiXO+/M0AbvLfnm4McZTnPnX1/OMeSuHKgwgBmEgv056wanh7L/Tu6/QQ+I6TeC3XUKJX5A21rqXh/LBA/TtoOS8rBteIu8hJp3BShGRYuTiQjWVPxlziz2utUmtl+FM6NHnKL53yfBbfyGuA7yPv8YUIF0yJrUFt6ZP1/cPxQwwkzgeLn8iJrwGC2jyAAAAAElFTkSuQmCC"
+}, {
+  "title": "나무위키",
+  "description": "2023. 10. 27. — JavaScript는 멀티-패러다임 언어로 명령형, 함수형, 객체 지향형 언어다. 기본적으로는 함수가 일급 시민으로 취급되는 언어로써 함수형 프로그래밍 ...",
+  "originURL": "https://namu.wiki/w/JavaScript",
+  "favicon": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAMAAABEpIrGAAAAwFBMVEUBp5oCp5oDp5kFqJcGqJYHqZQKqpAOq40QrIsRrIoTrYgUrYcVroYXroMYr4MZr4Ebr4AcsH8dsH4esXsfsXohsnkisncjs3Yks3Ums3QntHMAn4YApYV6yLvp9vP0/Pue1spdvq/////b8OmR0cK34doApGdewKfS7OQAqns7uI4+tp3E5t4ArnOo3MWX1L4ArmuDzLhPvJpawJkAn2614cwAoXoytJVyx6uM0bau3NWl2sfE5+FCtaZPu6Rkv7KC2ANCAAABE0lEQVR4AdyRU4IDQQBEY9vJ9Oj1mLFx/1OtrQPsf7kymWwuXygWS6VSuVyp1uqNZqvd6fb6g+FoPJnOZv8LoIjynwBV0w3xB8BEk1iiUq03mz8BijaKo0lRdT3P9X9SMDADPOECuO2fMuhAKCKUGM9/AsRxPPrYwpK6EBGlPtETIE68dP5ph5CFCAGWjxaxRCeafwQIqYlqaGv6Y8jeCmu9YfxpSZWwWt3u2Lfbfnz4ASCItjsb5Lqb6vDZQlGPprDw4JRiQ7R6CJl8CHkGbB1t0Wj4cGoNPtcsXDg2PaLrtlarN0/4X4cq3LitE0Tl6awGB/8roAge8vXNfev71KHUo/vB0wPWuJCWZsORYEZIxgEAuatI9jt5CO8AAAAASUVORK5CYII="
+}, {
+  "title": "코드스테이츠",
+  "description": "흔히들 JavaScript는 “HTML과 CSS로 구성된 웹 페이지를 동적으로 만들어주는 언어” 라고 설명을 합니다. 이러한 JavaScript는 어떻게 탄생하게 되었을까요? JavaScript가 ...",
+  "originURL": "https://www.codestates.com/blog/content/javascript-%EA%B8%B0%EC%B4%88-%EB%B0%8F-%EB%AC%B8%EB%B2%95",
+  "favicon": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAABR0lEQVR4Ae3UAURDQRzH8dubDNoDUhjZK2ALIJGWZCFArWwTCKAA1QIQQJAiAEUYQFALQEiBIKRGBYVAiWjbvy/uoZW3re5l5v34PO6cux/enTKdIEGCpIfKXelkOYb+BqK+FGDjRdzgzsMD9tBj+vApPEKa8IF90wV2IC2omi6wC2lFxxXYhLTgzXSBJC4hTXhBwY9rmMIhSh5OsIqI8iMHY2IhDOtHKbGKkxJSbqJOLoYZZLRp2PUb2042zPwo5pDxMNuEAX14dpDBEaqoaO/YwpfnUm/+5K79gypOkVB8zlCD1Klgw47nQ/rwYdxDDLpQDRYc204+ogssuEVNavsCpf8ocO2xYJsCli4wgWeIQbfuz3UOgauGInqVTreTtRgv4xViwBXG3euVwAoK2hL6vr0D8VyE+XmsY+2XCtqIChIkSDvkE0bRYNkDsLOwAAAAAElFTkSuQmCC"
+}, {
+  "title": "Wikipedia",
+  "description": "자바스크립트(영어: JavaScript)는 객체 기반의 스크립트 프로그래밍 언어이다. 이 언어는 웹 브라우저 내에서 주로 사용되며, 다른 응용 프로그램의 내장 객체에도 ...",
+  "originURL": "https://ko.wikipedia.org/wiki/%EC%9E%90%EB%B0%94%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8",
+  "favicon": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAMAAABEpIrGAAAAM1BMVEUAAAD+/v41NTUBAQEAAABZWVknJycWFhaZmZmIiIjp6ellZWXMzMzX19eurq54eHhHR0dExXFyAAAAAXRSTlMAQObYZgAAAPtJREFUeAG8kAWOBDAMA9d1Sin+/7XXbpZZdBaURlMrhx28ycGCD/n0bvkBwJf8C+AoIvRAWGtMyHGtCWkfxW+DRopuuIjUtTQJDStevNoXWaRjRSllLd1O8FFhgEZx2BmkAmHC8HwpOUyxSA50VqOjXgAl50URvNWPBRcAnmwnhbcduthqQCO9KYTFBG7eDWoK1T47AZX9DuiUYT/TuhX3MGpnD51kPprSA9Dl+BCKl7jWHHEHmHsLWhNZZMxPQCLTEuy+cYF6D9i8Q5e2Lcyz4AGwKdJbX0p7AegC2qnvxAsAxQRAYH8J6Dg1a/lvpKRJinMW4cxLMPsDAJjSCaG8cPmnAAAAAElFTkSuQmCC"
+}, {
+  "title": "모던 JavaScript 튜토리얼",
+  "description": "모던 자바스크립트 튜토리얼은 클로저, 문서 객체 모델, 이벤트, 객체 지향 프로그래밍 등의 다양한 주제에 대한 설명과 예시, 과제를 담고 있습니다.",
+  "originURL": "https://ko.javascript.info/",
+  "favicon": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAADF0lEQVR4Ac1WA5AcQRTtGOcdnG+mpxTbtlmIbZZiOylEpaAQ2062dmZj2ywEpdjWf7U9mzNnrvIOXf0bv//7mM8ywiFPfMI2llCCOQDc4/XEJebwECtkqcZy05NUhuUBPkkr7VeNFTMZK8xyCrDgV4wnpsIHslzAUvT+OJ+59ZmjAF1wgCz4Q2xs3CvLYdliT1FCLZWvxzlLMQ7hHpZbHAqNUSyF38dlpqqPZ9kAKR8rlD/whkarLK8wZaOnuPBRVhfuD4uTibWHAdZ4b+YEVjJWxFT5bGLip1/m0zL3O5+CffQ3F+eYk7AkXsOv8B0ZpedqphfHus+j12I5BQLMJ+kdLUlr4o1KLGeG8GikYhqKWVzJjFITcqynliMFj8harBnFK5iS0cySeXs8lqXG7kg9kqgbTVb8hg8xUvQPTze/ZaMt+foi/X3AiHm6rMn6jOB9Kv9CewcgSzIrQEXBBG1eRJsviWA6byp6q+TKIU/9l/wRtL8rPf5GwBDjFAXwAr+itSE2CrLsAq4gutYFLuDbTIXXhxwWi6x4RuMsjJhDLpS3ov37yPJjtLbaiuQacwJgByNoF1bPwhwj5pAH97kJmwEaX5CVRzEmY8B1oDC1yzwG3Adov5VcOQXcbZZfQE5bCv8FxQhOO2Uhzx8XqMYIO+jwqU32mFEsP0Cp5RdpuDPgDn5OsHCMuQ3xef4ZLFAor7I+HXMwgRLubvDJfEgw+OxyrfDj9pxK7zCX6edeofiqJWtVKPp3BWo9/ygeYboX/eEJHgq8H4LuOajrqPkUC/dJ/l7If6Ipccl6vb9NtalqaFDui1j4aMp8zz838EFuleADdrAJN7wBE2ZYvBRoRI2vQn6EOQ1flBFBCr4lD76jCr+CB1iqVgfNCxSL+vD9QERSlLPFR+K9ghRLxlK06UT9y2QPem33DwGW9H7MSZDC3aLmf7M7GgShV9JrkmwmaoLtGsHCAeYUoBDtlPC/N7MiZX+k8FC4zaFuWOuMS7NT7xET9l6kKHMCKLeodmSVBSsz3RuRZNDeE+SCkz5Fq8z+d/wFbvfHWf586qAAAAAASUVORK5CYII="
+}, {
+  "title": "벨로퍼트와 함께하는 모던 자바스크립트",
+  "description": "JavaScript 는 웹 브라우저에서 사용하기 위하여 만들어진 프로그래밍 언어입니다. 이 언어는 90년대부터 주로 웹 브라우저 상에서 UI 를 동적으로 보여주기 위하여 사용을 ...",
+  "originURL": "https://learnjs.vlpt.us/basics/",
+  "favicon": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAC/klEQVR4AWIYcODr66vn7e2tExAQoBwYGChWX1/PRCu7QGYD7RL09/dX8PPzUwdiLQYgAdB/ZOzj4/MHSD8BOuwQkJ4GxBlAx2mSahnQHA2gGclA/VOB9H4g/RCIf6Pbh3AAYfwQaNAUfI4B+kwXqKYPpBaXOeQ7AIH/AfFOsEMQvjUC8FoGHApEURT+j1WlSkRSsQhSUkokEIhIUFEpJIAFkYoUUolUBMoGpdqS6uwcGNqyM401h6H3zHv3e/ee+xph7lPBXs8AwsbfMhefhNN+CE9UALjJWSN47MJ3/wSgTqcTlssl2u02isUiotEojEaj7FPpdDoEg0Hk83k0m00sFgscj0dQBoPhSwLgta7XK/r9PhKJBIRavwwsuBytVgvn8xmvJQtAWvP5nKV6cHSv14O03gRg+pjKcDj8FOC3Vw6Hw/8CdLtdphqZTAapVIoBMZlMZAGwBLVaDel0miVRBpBMJhGLxcRxIBBANpuVBLjf7/D7/QwEn8/HQ6Barb4PwGAul4vuxW63g91uR6VSkQSYTqccYzweg+Iai8XyPsBms2FQ6PV6thXcbjf2+70kAMvE8Ww2A1Wv12EymZSZsNFoiPM0pBwT3m43eL1e2Gw2xONxaLVaFAoFZQCdTkec52+5XcBMMXtWq5UQ9IW6AOv1WpxnF1GqAuRyOXGebagWADuGrhevaofDgcvlogoA/yPYLeJYo9FgNBqBUgPg4WEHDAYDUKoCOJ1OlMtl0Q+KAMxmM1g7Xr2RSEQ2wHA4fGi37XYL3h28UUOhEOG4N9+9K/ok83g8KJVKWK1WP8OZCN+9eweuhEpLS0EJkSZtQpDBIB+htwdAYj+ATS5K24T0xwzAuGEFVjj8wA6DNBDrAxuZrtD2fCsQrwc2Iu+TazhQ7x0gvQracI0Fhp4DqEPi4eEham9vz0FK70kciCOBeCnQgC94LASli5UgtaBeFgMtADC0eICWZAMteYxk8RsgXQoKSQZ6AVdXV26gpTNBQQwsAYXINWcUAACmDus+xTJvSAAAAABJRU5ErkJggg=="
+}, {
+  "title": "Amazon Web Services",
+  "description": "",
+  "originURL": "https://aws.amazon.com/ko/what-is/javascript/",
+  "favicon": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAMAAABEpIrGAAAAyVBMVEUjLz4gLTwSIjQOIDIZJzgYJjdGTlmTl5ykp6tpb3cAGS45Qk5gZ3AyPEkqNUOKjpRaYWv////c3d9SWWMAFSu0trqanqP09fbS09V1eoIAABkAAACoq7AAAA7k5ebFx8qBhYsAABwACiV+g4pBSlW4u78AABQAACEAFyy2uLwdLT8ACS4AJkATKj9gSTUXKz9LPzi5dSDjihOOYCp4VTDpjgpmTDJWRTXIfRvTgxZCOzn7lwCrbiUAI0AvNDuZZSeIXS3/oQBwUTHffSETAAABKUlEQVR4AeyOhWHAIBBFIQrE+Ffi7rL/fnVhiD7kXNg/NtxxPcY99v2+bAs/CIVUUezx5P2l0mOZkFaGp0EEIfFicsSqgFeWFWorI/WatkOPohkgmmqc0M8LZ3+4QRF2aKtKoaAG64Yh4461Qo1qH3BM0OWGANzVIyD93wRD1PYF5hTjfmIk46vlGMj8JqgROgOChTDNFbJrFVriVr8JPCHQNm7uWiXO+/M0AbvLfnm4McZTnPnX1/OMeSuHKgwgBmEgv056wanh7L/Tu6/QQ+I6TeC3XUKJX5A21rqXh/LBA/TtoOS8rBteIu8hJp3BShGRYuTiQjWVPxlziz2utUmtl+FM6NHnKL53yfBbfyGuA7yPv8YUIF0yJrUFt6ZP1/cPxQwwkzgeLn8iJrwGC2jyAAAAAElFTkSuQmCC"
+}, {
+  "title": "TCP School",
+  "description": "자바스크립트(JavaScript)는 객체(object) 기반의 스크립트 언어입니다. HTML로는 웹의 내용을 작성하고, CSS로는 웹을 ...",
+  "originURL": "http://www.tcpschool.com/javascript/intro",
+  "favicon": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAArklEQVR4AWKAAa2SnYB25wADYTiK43iTyDSF6iARMNoFukLoFJ2gOyQAHSTIQkSdJS307xskj/5TazP8Hh/Ae+/7FCBCtyQdBHj9tQE9bJBi92d7rBH6AgY4w5UkRVTrgD4OuOLicYMzspydDNu8gBbGSDD5IMYKzlgi9uwlGKGJxrdjQxfm+R2zAocLBihAAQpQgAIUoAAFKEABCkDVAXOccHwzrTIgxNBo/xLwAKwh023bQh5pAAAAAElFTkSuQmCC"
+}, {
+  "title": "모던 JavaScript 튜토리얼",
+  "description": "2022. 7. 26. — 정의. 자바스크립트는 '웹페이지에 생동감을 불어넣기 위해' 만들어진 프로그래밍 언어입니다. 자바스크립트로 작성한 프로그램을 스크립트(script) 라고 ...",
+  "originURL": "https://ko.javascript.info/intro",
+  "favicon": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAADF0lEQVR4Ac1WA5AcQRTtGOcdnG+mpxTbtlmIbZZiOylEpaAQ2062dmZj2ywEpdjWf7U9mzNnrvIOXf0bv//7mM8ywiFPfMI2llCCOQDc4/XEJebwECtkqcZy05NUhuUBPkkr7VeNFTMZK8xyCrDgV4wnpsIHslzAUvT+OJ+59ZmjAF1wgCz4Q2xs3CvLYdliT1FCLZWvxzlLMQ7hHpZbHAqNUSyF38dlpqqPZ9kAKR8rlD/whkarLK8wZaOnuPBRVhfuD4uTibWHAdZ4b+YEVjJWxFT5bGLip1/m0zL3O5+CffQ3F+eYk7AkXsOv8B0ZpedqphfHus+j12I5BQLMJ+kdLUlr4o1KLGeG8GikYhqKWVzJjFITcqynliMFj8harBnFK5iS0cySeXs8lqXG7kg9kqgbTVb8hg8xUvQPTze/ZaMt+foi/X3AiHm6rMn6jOB9Kv9CewcgSzIrQEXBBG1eRJsviWA6byp6q+TKIU/9l/wRtL8rPf5GwBDjFAXwAr+itSE2CrLsAq4gutYFLuDbTIXXhxwWi6x4RuMsjJhDLpS3ov37yPJjtLbaiuQacwJgByNoF1bPwhwj5pAH97kJmwEaX5CVRzEmY8B1oDC1yzwG3Adov5VcOQXcbZZfQE5bCv8FxQhOO2Uhzx8XqMYIO+jwqU32mFEsP0Cp5RdpuDPgDn5OsHCMuQ3xef4ZLFAor7I+HXMwgRLubvDJfEgw+OxyrfDj9pxK7zCX6edeofiqJWtVKPp3BWo9/ygeYboX/eEJHgq8H4LuOajrqPkUC/dJ/l7If6Ipccl6vb9NtalqaFDui1j4aMp8zz838EFuleADdrAJN7wBE2ZYvBRoRI2vQn6EOQ1flBFBCr4lD76jCr+CB1iqVgfNCxSL+vD9QERSlLPFR+K9ghRLxlK06UT9y2QPem33DwGW9H7MSZDC3aLmf7M7GgShV9JrkmwmaoLtGsHCAeYUoBDtlPC/N7MiZX+k8FC4zaFuWOuMS7NT7xET9l6kKHMCKLeodmSVBSsz3RuRZNDeE+SCkz5Fq8z+d/wFbvfHWf586qAAAAAASUVORK5CYII="
+}]
