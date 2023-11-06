@@ -1,13 +1,20 @@
 import * as Cheerio from 'cheerio'
+import { Entity, PrimaryColumn, Column } from 'typeorm'
 import { removeMultipleWhiteSpaces } from 'src/common/lib/remove-multiple-white-spaces'
 
+@Entity()
 export class Card {
-  constructor (
-    public title: string,
-    public description: string,
-    public originURL: string,
-    public favicon: string
-  ) {}
+  @PrimaryColumn()
+  public originURL?: string
+
+  @Column()
+  public title?: string
+
+  @Column()
+  public description?: string
+
+  @Column({ type: 'text' })
+  public favicon?: string
 
   static extractCardsFromHTML (html: string): Card[] {
     const $ = Cheerio.load(html)
@@ -16,16 +23,11 @@ export class Card {
       const cards: Card[] = []
 
       $('.MjjYud').each((i, el) => {
-        const card = new Card(
-          // title
-          $(el).find('.notranslate .VuuXrf').text(),
-          // description
-          removeMultipleWhiteSpaces($(el).find('.VwiC3b').text()),
-          // originURL
-          $(el).find('a[jsname="UWckNb"]').attr('href') ?? '',
-          // favicon
-          $(el).find('.notranslate .XNo5Ab').attr('src') ?? ''
-        )
+        const card = new Card()
+        card.originURL = $(el).find('a[jsname="UWckNb"]').attr('href') ?? ''
+        card.title = $(el).find('.notranslate .VuuXrf').text()
+        card.description = removeMultipleWhiteSpaces($(el).find('.VwiC3b').text())
+        card.favicon = $(el).find('.notranslate .XNo5Ab').attr('src') ?? ''
         cards.push(card)
       })
 
