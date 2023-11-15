@@ -1,6 +1,6 @@
 import { Logger, Controller, Post, Body } from '@nestjs/common'
 import { CardService } from './card.service'
-import { Card } from './entities/card.entity'
+import { Card } from './entity/card.entity'
 import { CrawlCardsDTO } from './dto/crawl-cards.dto'
 
 @Controller('cards')

@@ -1,5 +1,5 @@
 import { Injectable, Inject, Logger } from '@nestjs/common'
-import { Card } from './entities/card.entity'
+import { Card } from './entity/card.entity'
 import { CardRepository } from './card.repository'
 import { CardRepositoryMaria } from './persistence/card.repository-maria'
 import {

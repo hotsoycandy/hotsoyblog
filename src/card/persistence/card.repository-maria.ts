@@ -1,7 +1,7 @@
 import { Inject } from '@nestjs/common/decorators'
 import { DataSource, Repository } from 'typeorm'
 import { CardRepository } from '../card.repository'
-import { Card } from '../entities/card.entity'
+import { Card } from '../entity/card.entity'
 
 export class CardRepositoryMaria
   extends Repository<Card>

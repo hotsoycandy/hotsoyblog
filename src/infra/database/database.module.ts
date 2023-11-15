@@ -1,7 +1,7 @@
 import { Logger, Module } from '@nestjs/common'
 import { ConfigModule, ConfigService } from '@nestjs/config'
 import { TypeOrmModule } from '@nestjs/typeorm'
-import { Card } from 'src/card/entities/card.entity'
+import { Card } from 'src/card/entity/card.entity'
 import { NestjsTypeOrmLogger } from './nestjs-typeorm-logger'
 
 function isDevEnv(NODE_ENV: string): boolean {
