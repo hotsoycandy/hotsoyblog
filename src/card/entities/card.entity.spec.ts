@@ -1,5 +1,8 @@
-import { getHTMLMock, SEARCH_ENGINE } from 'src/common/test-data/search-result/get-search-result'
-import googleJavascriptSearchResult from 'src/common/test-data/search-result/google-javascript.json'
+import {
+  getHTMLMock,
+  SEARCH_ENGINE,
+} from 'test/test-data/search-result/get-search-result'
+import googleJavascriptSearchResult from 'test/test-data/search-result/google-javascript.json'
 import { Card } from './card.entity'
 
 describe('Card Entity', () => {
@@ -18,31 +21,31 @@ describe('Card Entity', () => {
 
       test('extracts title?', () => {
         const cards = Card.extractCardsFromHTML(html)
-        expect(cards[0]?.title)
-          .toBe(googleJavascriptSearchResult[0]?.title)
+        expect(cards[0]?.title).toBe(googleJavascriptSearchResult[0]?.title)
       })
 
       test('extracts description?', () => {
         const cards = Card.extractCardsFromHTML(html)
-        expect(cards[0]?.description)
-          .toBe(googleJavascriptSearchResult[0]?.description)
+        expect(cards[0]?.description).toBe(
+          googleJavascriptSearchResult[0]?.description,
+        )
       })
 
       test('extracts originURL?', () => {
         const cards = Card.extractCardsFromHTML(html)
-        expect(cards[0]?.originURL)
-          .toBe(googleJavascriptSearchResult[0]?.originURL)
+        expect(cards[0]?.originURL).toBe(
+          googleJavascriptSearchResult[0]?.originURL,
+        )
       })
 
       test('extracts favicon?', () => {
         const cards = Card.extractCardsFromHTML(html)
-        expect(cards[0]?.favicon)
-          .toBe(googleJavascriptSearchResult[0]?.favicon)
+        expect(cards[0]?.favicon).toBe(googleJavascriptSearchResult[0]?.favicon)
       })
 
       test('filter empty result', () => {
         const cards = Card.extractCardsFromHTML(html)
-        cards.forEach(card => {
+        cards.forEach((card) => {
           expect(card.title).not.toBe('')
         })
       })

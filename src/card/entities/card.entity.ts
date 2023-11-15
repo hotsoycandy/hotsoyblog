@@ -16,7 +16,7 @@ export class Card {
   @Column({ type: 'text' })
   public favicon?: string
 
-  static extractCardsFromHTML (html: string): Card[] {
+  static extractCardsFromHTML(html: string): Card[] {
     const $ = Cheerio.load(html)
 
     const extractCards = (): Card[] => {
@@ -26,7 +26,9 @@ export class Card {
         const card = new Card()
         card.originURL = $(el).find('a[jsname="UWckNb"]').attr('href') ?? ''
         card.title = $(el).find('.notranslate .VuuXrf').text()
-        card.description = removeMultipleWhiteSpaces($(el).find('.VwiC3b').text())
+        card.description = removeMultipleWhiteSpaces(
+          $(el).find('.VwiC3b').text(),
+        )
         card.favicon = $(el).find('.notranslate .XNo5Ab').attr('src') ?? ''
         cards.push(card)
       })
@@ -34,6 +36,6 @@ export class Card {
       return cards
     }
 
-    return extractCards().filter(card => card.title !== '')
+    return extractCards().filter((card) => card.title !== '')
   }
 }
