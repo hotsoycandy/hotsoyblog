@@ -16,7 +16,7 @@ export class CardService {
     private readonly cardRepository: CardRepository,
   ) {}
 
-  async crawlCards(keyword: string): Promise<Card[]> {
+  async crawlAndSaveCards(keyword: string): Promise<Card[]> {
     const html = await getSearchResultHTML(SEARCH_ENGINE.GOOGLE, keyword)
     const cards = Card.extractCardsFromHTML(html)
     await this.cardRepository.saveCards(cards)
