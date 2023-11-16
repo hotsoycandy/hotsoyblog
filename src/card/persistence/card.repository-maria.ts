@@ -1,21 +1,17 @@
-import { Inject } from '@nestjs/common/decorators'
-import { DataSource, Repository } from 'typeorm'
+import { Injectable } from '@nestjs/common'
+import { InjectRepository } from '@nestjs/typeorm'
+import { Repository } from 'typeorm'
 import { CardRepository } from '../card.repository'
 import { Card } from '../entity/card.entity'
 
-export class CardRepositoryMaria
-  extends Repository<Card>
-  implements CardRepository
-{
+@Injectable()
+export class CardRepositoryMaria implements CardRepository {
   constructor(
-    @Inject('DATA_SOURCE')
-    dataSource: DataSource,
-  ) {
-    const repository = dataSource.getRepository(Card)
-    super(repository.target, repository.manager, repository.queryRunner)
-  }
+    @InjectRepository(Card)
+    private readonly cardRepository: Repository<Card>,
+  ) {}
 
   async saveCards(cards: Card[]): Promise<void> {
-    await this.save(cards)
+    await this.cardRepository.save(cards)
   }
 }

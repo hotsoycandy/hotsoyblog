@@ -1,12 +1,11 @@
 import { Module } from '@nestjs/common'
-import { DatabaseModule } from 'src/infra/database/database.module'
-import { CardRepositoryMaria } from './persistence/card.repository-maria'
 import { CardController } from './card.controller'
 import { CardService } from './card.service'
+import { CardRepositoryModule } from './persistence/card.repository.module'
 
 @Module({
-  imports: [DatabaseModule],
+  imports: [CardRepositoryModule],
   controllers: [CardController],
-  providers: [CardService, CardRepositoryMaria],
+  providers: [CardService],
 })
 export class CardModule {}
