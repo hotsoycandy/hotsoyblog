@@ -12,6 +12,6 @@ export class CardController {
   @Post('/crawl')
   async crawlCards(@Body() crawlsCardDto: CrawlCardsDTO): Promise<Card[]> {
     const { keyword } = crawlsCardDto
-    return await this.cardService.crawlCards(keyword)
+    return await this.cardService.crawlAndSaveCards(keyword)
   }
 }
