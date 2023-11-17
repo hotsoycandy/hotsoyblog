@@ -2,7 +2,7 @@ import * as Cheerio from 'cheerio'
 import { Entity, PrimaryColumn, Column } from 'typeorm'
 import { removeMultipleWhiteSpaces } from 'src/common/lib/remove-multiple-white-spaces'
 
-@Entity()
+@Entity({ name: 'cards' })
 export class Card {
   @PrimaryColumn()
   public originURL?: string
