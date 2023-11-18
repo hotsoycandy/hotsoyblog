@@ -5,13 +5,13 @@ import { removeMultipleWhiteSpaces } from 'src/common/lib/remove-multiple-white-
 @Entity({ name: 'cards' })
 export class Card {
   @PrimaryColumn()
-  public originURL?: string
+  public originUrl!: string
 
   @Column()
-  public title?: string
+  public title!: string
 
   @Column()
-  public description?: string
+  public description!: string
 
   @Column({ type: 'text' })
   public favicon?: string
@@ -24,7 +24,7 @@ export class Card {
 
       $('.MjjYud').each((i, el) => {
         const card = new Card()
-        card.originURL = $(el).find('a[jsname="UWckNb"]').attr('href') ?? ''
+        card.originUrl = $(el).find('a[jsname="UWckNb"]').attr('href') ?? ''
         card.title = $(el).find('.notranslate .VuuXrf').text()
         card.description = removeMultipleWhiteSpaces(
           $(el).find('.VwiC3b').text(),
