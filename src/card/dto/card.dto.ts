@@ -13,7 +13,7 @@ export class CardDto {
     const cardDto = new CardDto()
     Object.assign(
       cardDto,
-      pick(card, ['originURL', 'title', 'description', 'favicon']),
+      pick(card, ['originUrl', 'title', 'description', 'favicon']),
     )
     return cardDto
   }
