@@ -33,7 +33,7 @@ describe('Card Entity', () => {
 
       test('extracts originURL?', () => {
         const cards = Card.extractCardsFromHTML(html)
-        expect(cards[0]?.originURL).toBe(
+        expect(cards[0]?.originUrl).toBe(
           googleJavascriptSearchResult[0]?.originURL,
         )
       })
