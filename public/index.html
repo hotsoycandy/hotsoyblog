@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Code Hub</title>
+    <link rel="stylesheet" href="/main.css">
+    <script
+      src="https://code.jquery.com/jquery-3.7.1.min.js"
+      integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+      crossorigin="anonymous">
+    </script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/jsrender/1.0.13/jsrender.min.js"
+      integrity="sha512-T93uOawQ+FrEdyCPaWrQtppurbLm8SISu2QnHyddM0fGXKX9Amyirwibe1wGYbsW2F8lLzhOM/2+d3Zo94ljRQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer">
+    </script>
+    <script type="text/javascript">
+      $(document).ready(async () => {
+        const cards = await $.ajax({
+          method: 'get',
+          url: '/cards'
+        })
+
+        const html = $.templates("#dbfd-article-template").render({ cards })
+        $("#dbfd-article-list").html(html)
+      })
+    </script>
+  </head>
+  <body>
+    <div class="wrap">
+      <div style="height: 20px;"></div>
+      <h1 class="dbfd-title">DBFD</h1>
+      <p class="dbfd-subtitle">Database for Developer</p>
+
+      <div style="height: 10px;"></div>
+      <div class="wrap-padding">
+        <input
+          class="dbfd-input"
+          type="text"
+          placeholder="Search about development">
+
+        <div style="height: 30px;"></div>
+        <section class="dbfd-section">
+          <h2>Result</h2>
+          <div id="dbfd-article-list">
+            <script id="dbfd-article-template" type="text/x-jsrender">
+              {{for cards}}
+                <a href="{{:originUrl}}" target="_blank">
+                  <article class="dbfd-article">
+                    <img class="dbfd-article-favicon" src="{{:favicon}}"/>
+                    <h4 class="dbfd-article-title">{{:title}}</h4>
+                    <p class="dbfd-article-description">{{:description}}</p>
+                    <a class="dbfd-article-link" href="{{:originUrl}}" target="_blank">{{:originUrl}}</a>
+                  </article>
+                </a>
+              {{/for}}
+            </script>
+          </div>
+        </section>
+      </div>
+
+      <div style="height: 10px;"></div>
+
+      <footer>
+        © 2023. hotsoycandy. All rights reserved.
+      </footer>
+    </div>
+  </body>
+</html>
