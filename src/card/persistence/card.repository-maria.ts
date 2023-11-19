@@ -14,4 +14,8 @@ export class CardRepositoryMaria implements CardRepository {
   async saveCards(cards: Card[]): Promise<void> {
     await this.cardRepository.save(cards)
   }
+
+  async getCards(): Promise<Card[]> {
+    return await this.cardRepository.find()
+  }
 }
