@@ -22,4 +22,8 @@ export class CardService {
     await this.cardRepository.saveCards(cards)
     return cards
   }
+
+  async getCards(): Promise<Card[]> {
+    return await this.cardRepository.getCards()
+  }
 }
