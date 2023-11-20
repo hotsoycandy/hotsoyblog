@@ -8,6 +8,9 @@ export class Card {
   public originUrl!: string
 
   @Column()
+  public siteName!: string
+
+  @Column()
   public title!: string
 
   @Column()
@@ -25,7 +28,8 @@ export class Card {
       $('.MjjYud').each((i, el) => {
         const card = new Card()
         card.originUrl = $(el).find('a[jsname="UWckNb"]').attr('href') ?? ''
-        card.title = $(el).find('.notranslate .VuuXrf').text()
+        card.siteName = $(el).find('.notranslate .VuuXrf').text()
+        card.title = $(el).find('h3.LC20lb.MBeuO.DKV0Md').text()
         card.description = removeMultipleWhiteSpaces(
           $(el).find('.VwiC3b').text(),
         )

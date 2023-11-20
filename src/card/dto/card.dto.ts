@@ -5,6 +5,7 @@ import { pick } from 'lodash'
 @Expose({ toPlainOnly: true })
 export class CardDto {
   public originURL!: string
+  public siteName!: string
   public title!: string
   public description!: string
   public favicon?: string
@@ -13,7 +14,7 @@ export class CardDto {
     const cardDto = new CardDto()
     Object.assign(
       cardDto,
-      pick(card, ['originUrl', 'title', 'description', 'favicon']),
+      pick(card, ['originUrl', 'siteName', 'title', 'description', 'favicon']),
     )
     return cardDto
   }
