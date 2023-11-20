@@ -40,8 +40,18 @@ a { color: inherit; text-decoration: none; }
   overflow: hidden;
 }
 
-.dbfd-article-title {
+.dbfd-article.loading {
+  border: none;
+}
+
+.dbfd-article-site-name {
+  font-size: 14px;
   display: inline;
+}
+
+.dbfd-article-title {
+  font-size: 16px;
+  margin-top: 6px;
 }
 
 .dbfd-article-description {
@@ -53,6 +63,7 @@ a { color: inherit; text-decoration: none; }
 .dbfd-article-link {
   color: blue;
   font-size: 14px;
+  display: inline;
   white-space: nowrap;
 }
 .dbfd-article-link:link { color: #0000EE; }
@@ -61,6 +72,18 @@ a { color: inherit; text-decoration: none; }
 .dbfd-article-favicon {
   width: 14px;
   height: 14px;
+}
+
+.loading {
+  animation: loading 2s ease infinite alternate forwards;
+  color: transparent;
+  border-radius: 10px;
+  border: 1px solid #999;
+}
+
+@keyframes loading {
+  0%{ background-color: #fff;  }
+  100%{ background-color: #ddd; }
 }
 
 footer {

@@ -22,8 +22,10 @@
           url: '/cards'
         })
 
+        await new Promise(resolve => setTimeout(resolve, 5000))
+
         const html = $.templates("#dbfd-article-template").render({ cards })
-        $("#dbfd-article-list").html(html)
+        // $("#dbfd-article-list").html(html)
       })
     </script>
   </head>
@@ -44,14 +46,29 @@
         <section class="dbfd-section">
           <h2>Result</h2>
           <div id="dbfd-article-list">
+            <article class="dbfd-article loading">
+              <img class="dbfd-article-favicon loading" src="https://64.media.tumblr.com/tumblr_m4ftp0rt8W1qz6q4yo1_r1_640.png" alt="."/>
+              <h3 class="dbfd-article-site-name loading">site name</h3>
+              <h3 class="dbfd-article-title loading">title</h3>
+              <p class="dbfd-article-description loading">
+                asdifljhasldkfja;dslkfjal;sdkfj;alksdfja;lkdsfj;alkdsf
+                asdifljhasldkfja;dslkfjal;sdkfj;alksdfja;lkdsfj;alkdsf
+                asdifljhasldkfja;dslkfjal;sdkfj;alksdfja;lkdsfj;alkdsf
+                asdifljhasldkfja;dslkfjal;sdkfj;alksdfja;lkdsfj;alkdsf
+                asdifljhasldkfja;dslkfjal;sdkfj;alksdfja;lkdsfj;alkdsf
+              </p>
+              <p class="dbfd-article-link loading">{{:originUrl}}</p>
+            </article>
+
             <script id="dbfd-article-template" type="text/x-jsrender">
               {{for cards}}
                 <a href="{{:originUrl}}" target="_blank">
                   <article class="dbfd-article">
-                    <img class="dbfd-article-favicon" src="{{:favicon}}"/>
-                    <h4 class="dbfd-article-title">{{:title}}</h4>
+                    <img class="dbfd-article-favicon" src="{{:favicon}}" />
+                    <h3 class="dbfd-article-site-name">{{:siteName}}</h3>
+                    <h3 class="dbfd-article-title">{{:title}}</h3>
                     <p class="dbfd-article-description">{{:description}}</p>
-                    <a class="dbfd-article-link" href="{{:originUrl}}" target="_blank">{{:originUrl}}</a>
+                    <p class="dbfd-article-link">{{:originUrl}}</p>
                   </article>
                 </a>
               {{/for}}
