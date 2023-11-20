@@ -22,10 +22,10 @@
           url: '/cards'
         })
 
-        await new Promise(resolve => setTimeout(resolve, 5000))
+        await new Promise(resolve => setTimeout(resolve, 500))
 
         const html = $.templates("#dbfd-article-template").render({ cards })
-        // $("#dbfd-article-list").html(html)
+        $("#dbfd-article-list").html(html)
       })
     </script>
   </head>
