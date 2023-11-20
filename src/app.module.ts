@@ -4,6 +4,7 @@ import { ServeStaticModule } from '@nestjs/serve-static'
 import { DatabaseModule } from './infra/database/database.module'
 import { CardModule } from './card/card.module'
 import { AuthModule } from './auth/auth.module'
+import { UserModule } from './user/user.module'
 
 @Module({
   imports: [
@@ -13,6 +14,7 @@ import { AuthModule } from './auth/auth.module'
     }),
     CardModule,
     AuthModule,
+    UserModule,
   ],
   controllers: [],
   providers: [],
