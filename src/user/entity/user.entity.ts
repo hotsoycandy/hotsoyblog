@@ -1,5 +1,5 @@
 export class User {
-  public idx!: string
+  public idx!: number
 
   public email!: string
 
