@@ -5,7 +5,7 @@ export abstract class UserRepository {
     email: string
     password: string
     nickname: string
-  }): Promise<User>
+  }): User
 
   abstract createUser(user: User): Promise<User>
 }
