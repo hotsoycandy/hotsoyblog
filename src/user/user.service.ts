@@ -1,4 +1,5 @@
-import { Injectable } from '@nestjs/common'
+import { pick } from 'lodash'
+import { Injectable, BadRequestException } from '@nestjs/common'
 import { User } from './entity/user.entity'
 import { UserRepository } from './user.repository'
 
@@ -11,6 +12,16 @@ export class UserService {
     password: string
     nickname: string
   }): Promise<User> {
-    throw new Error('Method is not ready yet')
+    const { email } = createUserParams
+
+    const emailDuplication = await this.userRepository.getUser({ email })
+    if (emailDuplication !== null) {
+      throw new BadRequestException('duplicated email')
+    }
+
+    const user = this.userRepository.newUser(
+      pick(createUserParams, ['email', 'password', 'nickname']),
+    )
+    return await this.userRepository.createUser(user)
   }
 }
